@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Henderson Detailing — On-Site Detailing in Fort Worth</title>
+  <meta name="description" content="Mobile, on-site car detailing in Fort Worth. Quick booking request form. We come to you." />
+
+  <style>
+    :root{
+      --bg:#0b0f14;
+      --card:#121a23;
+      --text:#e8eef6;
+      --muted:#a9b7c6;
+      --accent:#ff2d2d;   /* red accent */
+      --line:#223141;
+      --good:#35d07f;
+      --warn:#ffd166;
+      --shadow: 0 12px 30px rgba(0,0,0,.35);
+      --radius:18px;
+      --max: 1080px;
+      --pad: 18px;
+      --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:var(--font);
+      color:var(--text);
+      background:
+        radial-gradient(1200px 700px at 15% 0%, rgba(255,45,45,.18), transparent 55%),
+        radial-gradient(1000px 600px at 85% 10%, rgba(53,208,127,.12), transparent 60%),
+        var(--bg);
+      line-height:1.35;
+    }
+    a{color:inherit}
+    .wrap{max-width:var(--max); margin:0 auto; padding:28px 18px 70px}
+    header{
+      display:flex; align-items:center; justify-content:space-between; gap:12px;
+      padding:12px 0 24px;
+    }
+    .brand{
+      display:flex; gap:12px; align-items:center;
+    }
+    .logo{
+      width:44px; height:44px; border-radius:14px;
+      background: linear-gradient(135deg, rgba(255,45,45,.95), rgba(255,45,45,.35));
+      box-shadow: var(--shadow);
+      position:relative;
+      overflow:hidden;
+    }
+    .logo::after{
+      content:"";
+      position:absolute; inset:10px 12px 12px 10px;
+      border:2px solid rgba(255,255,255,.55);
+      border-radius:12px;
+      transform: rotate(8deg);
+      opacity:.65;
+    }
+    .brand h1{font-size:16px; margin:0}
+    .brand p{margin:2px 0 0; color:var(--muted); font-size:13px}
+    .btn{
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(18,26,35,.55);
+      color:var(--text);
+      padding:10px 14px;
+      border-radius:999px;
+      text-decoration:none;
+      display:inline-flex; gap:10px; align-items:center;
+      box-shadow: 0 8px 18px rgba(0,0,0,.25);
+      cursor:pointer;
+      transition: transform .08s ease, border-color .12s ease, background .12s ease;
+      user-select:none;
+    }
+    .btn:hover{transform: translateY(-1px); border-color: rgba(255,255,255,.22); background: rgba(18,26,35,.75);}
+    .btn.primary{
+      background: linear-gradient(135deg, rgba(255,45,45,.95), rgba(255,45,45,.6));
+      border-color: rgba(255,45,45,.2);
+    }
+    .btn.primary:hover{border-color: rgba(255,255,255,.22)}
+    .pill{
+      font-size:12px; color:var(--muted);
+      border:1px solid rgba(255,255,255,.12);
+      padding:6px 10px; border-radius:999px;
+      display:inline-flex; gap:8px; align-items:center;
+      background: rgba(18,26,35,.4);
+    }
+    .grid{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap:18px;
+      margin-top:14px;
+    }
+    @media (max-width: 940px){
+      .grid{grid-template-columns:1fr; }
+      header{flex-wrap:wrap}
+    }
+    .hero{
+      background: rgba(18,26,35,.5);
+      border:1px solid rgba(255,255,255,.10);
+      border-radius: var(--radius);
+      padding: 22px;
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      position:relative;
+    }
+    .hero::before{
+      content:"";
+      position:absolute;
+      width:520px; height:520px;
+      background: radial-gradient(circle at 30% 30%, rgba(255,45,45,.18), transparent 55%);
+      top:-280px; left:-260px;
+      pointer-events:none;
+    }
+    .hero h2{margin: 0 0 10px; font-size: 34px; letter-spacing:-.02em}
+    .hero .sub{margin: 0 0 16px; color:var(--muted); font-size:15px; max-width: 56ch}
+    .hero .row{display:flex; flex-wrap:wrap; gap:10px; align-items:center}
+    .hero .kpis{
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap:10px;
+      margin-top:16px;
+    }
+    @media (max-width: 560px){
+      .hero h2{font-size:28px}
+      .hero .kpis{grid-template-columns:1fr}
+    }
+    .kpi{
+      background: rgba(0,0,0,.16);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius: 16px;
+      padding: 12px 12px;
+    }
+    .kpi b{display:block; font-size:14px}
+    .kpi span{color:var(--muted); font-size:12px}
+    .panel{
+      background: rgba(18,26,35,.5);
+      border:1px solid rgba(255,255,255,.10);
+      border-radius: var(--radius);
+      padding: 18px;
+      box-shadow: var(--shadow);
+    }
+    .panel h3{margin: 0 0 12px; font-size:16px}
+    .divider{height:1px; background: rgba(255,255,255,.10); margin:14px 0}
+    .services{
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap:10px;
+    }
+    @media (max-width: 560px){ .services{grid-template-columns:1fr} }
+    .card{
+      background: rgba(0,0,0,.16);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius: 16px;
+      padding: 12px;
+    }
+    .card b{display:flex; justify-content:space-between; gap:10px}
+    .tag{
+      font-size:11px;
+      padding: 3px 8px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.12);
+      color: var(--muted);
+      white-space:nowrap;
+    }
+    .card p{margin:8px 0 0; color:var(--muted); font-size:13px}
+    form{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:10px;
+    }
+    @media (max-width: 560px){ form{grid-template-columns:1fr} }
+    label{display:block; font-size:12px; color:var(--muted); margin:2px 0 6px}
+    input, select, textarea{
+      width:100%;
+      background: rgba(0,0,0,.18);
+      border:1px solid rgba(255,255,255,.12);
+      color: var(--text);
+      border-radius: 14px;
+      padding: 10px 12px;
+      outline:none;
+    }
+    textarea{min-height: 92px; resize: vertical}
+    input:focus, select:focus, textarea:focus{border-color: rgba(255,45,45,.55)}
+    .full{grid-column: 1 / -1}
+    .note{font-size:12px; color:var(--muted); margin:10px 0 0}
+    .footer{
+      margin-top:18px;
+      color: var(--muted);
+      font-size:12px;
+      display:flex; flex-wrap:wrap; gap:10px; justify-content:space-between; align-items:center;
+    }
+    .mini{
+      display:flex; gap:10px; flex-wrap:wrap; align-items:center;
+    }
+    .ok{
+      display:inline-flex; gap:8px; align-items:center;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(53,208,127,.25);
+      background: rgba(53,208,127,.08);
+      color: rgba(232,238,246,.92);
+      font-size:12px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <h1>Henderson Detailing</h1>
+          <p>On-Site Detailing • Fort Worth, TX</p>
+        </div>
+      </div>
+      <div class="mini">
+        <span class="pill">🚗 We come to you</span>
+        <a class="btn" href="#services">Services</a>
+        <a class="btn primary" href="#book">Request Appointment</a>
+      </div>
+    </header>
+
+    <div class="grid">
+      <section class="hero">
+        <h2>Mobile detailing that fits your schedule.</h2>
+        <p class="sub">
+          Tell us what you need and when you’re available. We’ll confirm by text and show up ready to make your ride look unfairly clean. 🧼✨
+        </p>
+
+        <div class="row">
+          <a class="btn primary" href="#book">📅 Request an appointment</a>
+          <a class="btn" href="tel:+1YOURNUMBERHERE">📞 Call / Text</a>
+          <a class="btn" href="sms:+1YOURNUMBERHERE">💬 Text now</a>
+        </div>
+
+        <div class="hero kpis" aria-label="Quick highlights">
+          <div class="kpi">
+            <b>On-site service</b>
+            <span>Home • Work • Anywhere in the area</span>
+          </div>
+          <div class="kpi">
+            <b>Fast confirmations</b>
+            <span>We reply ASAP with exact time + price</span>
+          </div>
+          <div class="kpi">
+            <b>Simple payment</b>
+            <span>Cash • Cash App • Zelle (backup)</span>
+          </div>
+        </div>
+      </section>
+
+      <aside class="panel" id="book">
+        <h3>Request an appointment</h3>
+        <div class="ok">✅ No account needed • We confirm by text</div>
+        <div class="divider"></div>
+
+        <form id="bookingForm">
+          <div>
+            <label for="name">Name</label>
+            <input id="name" name="name" placeholder="Your name" required />
+          </div>
+          <div>
+            <label for="phone">Phone (for confirmation)</label>
+            <input id="phone" name="phone" placeholder="(817) 555-1234" required />
+          </div>
+
+          <div class="full">
+            <label for="address">Service address (where we come to you)</label>
+            <input id="address" name="address" placeholder="Street + City (Fort Worth / nearby)" required />
+          </div>
+
+          <div>
+            <label for="vehicle">Vehicle</label>
+            <input id="vehicle" name="vehicle" placeholder="e.g., 2018 Honda Civic" required />
+          </div>
+          <div>
+            <label for="service">Service</label>
+            <select id="service" name="service" required>
+              <option value="" selected disabled>Select one</option>
+              <option>Interior Refresh</option>
+              <option>Exterior Wash & Shine</option>
+              <option>Full Detail (Interior + Exterior)</option>
+              <option>Deep Clean (Heavy Interior)</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="date">Preferred date</label>
+            <input id="date" name="date" type="date" required />
+          </div>
+          <div>
+            <label for="window">Time window</label>
+            <select id="window" name="window" required>
+              <option value="" selected disabled>Pick a window</option>
+              <option>Morning (8–11)</option>
+              <option>Midday (11–2)</option>
+              <option>Afternoon (2–5)</option>
+              <option>Evening (5–8)</option>
+            </select>
+          </div>
+
+          <div class="full">
+            <label for="notes">Notes (pets, heavy stains, request add-ons, etc.)</label>
+            <textarea id="notes" name="notes" placeholder="Example: dog hair + coffee spill, want it looking new 🙏"></textarea>
+          </div>
+
+          <div class="full">
+            <button class="btn primary" type="submit">Send request</button>
+            <p class="note">
+              By sending, you’re requesting an appointment. We’ll confirm the exact time + total price by text.
+            </p>
+          </div>
+        </form>
+
+        <div class="footer">
+          <span>© <span id="year"></span> Henderson Detailing</span>
+          <span>Serving Fort Worth + nearby</span>
+        </div>
+      </aside>
+    </div>
+
+    <section class="panel" id="services" style="margin-top:18px;">
+      <h3>Popular services</h3>
+      <div class="services">
+        <div class="card">
+          <b>Interior Refresh <span class="tag">Best for maintenance</span></b>
+          <p>Vacuum, wipe-down, windows, light spot cleaning.</p>
+        </div>
+        <div class="card">
+          <b>Exterior Wash & Shine <span class="tag">Quick clean</span></b>
+          <p>Hand wash, wheels, dry, quick shine.</p>
+        </div>
+        <div class="card">
+          <b>Full Detail <span class="tag">Most booked</span></b>
+          <p>Interior + exterior with extra attention to the details.</p>
+        </div>
+        <div class="card">
+          <b>Deep Clean <span class="tag">Heavy interior</span></b>
+          <p>Stains, pet hair, spills—quote depends on condition.</p>
+        </div>
+      </div>
+      <div class="divider"></div>
+      <p class="note">
+        Pricing varies by vehicle size + condition. We’ll confirm a fair price after you send the request.
+      </p>
+    </section>
+  </div>
+
+  <script>
+    // Set min date to today (local)
+    const dateInput = document.getElementById('date');
+    const today = new Date();
+    const yyyy = today.getFullYear();
+    const mm = String(today.getMonth() + 1).padStart(2,'0');
+    const dd = String(today.getDate()).padStart(2,'0');
+    dateInput.min = `${yyyy}-${mm}-${dd}`;
+
+    document.getElementById('year').textContent = yyyy;
+
+    // Mailto-based submission (no backend)
+    document.getElementById('bookingForm').addEventListener('submit', function(e){
+      e.preventDefault();
+
+      const data = Object.fromEntries(new FormData(e.target).entries());
+
+      const subject = encodeURIComponent(`Detailing Request — ${data.name} (${data.vehicle})`);
+      const body = encodeURIComponent(
+`New appointment request:
+
+Name: ${data.name}
+Phone: ${data.phone}
+Address: ${data.address}
+Vehicle: ${data.vehicle}
+Service: ${data.service}
+Preferred date: ${data.date}
+Time window: ${data.window}
+
+Notes:
+${data.notes || "(none)"}
+
+— Sent from Henderson Detailing landing page`
+      );
+
+      // TODO: Replace with your business email
+      const yourEmail = "YOURBUSINESSEMAIL@EXAMPLE.COM";
+
+      window.location.href = `mailto:${yourEmail}?subject=${subject}&body=${body}`;
+    });
+  </script>
+</body>
+</html>
