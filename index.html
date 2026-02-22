@@ -2,391 +2,945 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Henderson Detailing — On-Site Detailing in Fort Worth</title>
-  <meta name="description" content="Mobile, on-site car detailing in Fort Worth. Quick booking request form. We come to you." />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>Henderson Detailing — On-Site Detailing</title>
+  <meta name="description" content="Mobile on-site detailing. Clear packages, reviews, before/after, and quick appointment requests." />
 
   <style>
     :root{
-      --bg:#0b0f14;
-      --card:#121a23;
-      --text:#e8eef6;
-      --muted:#a9b7c6;
-      --accent:#ff2d2d;   /* red accent */
-      --line:#223141;
-      --good:#35d07f;
-      --warn:#ffd166;
-      --shadow: 0 12px 30px rgba(0,0,0,.35);
-      --radius:18px;
-      --max: 1080px;
-      --pad: 18px;
+      /* Brand-ish palette from your logo */
+      --bg: #0b0f14;
+      --card: rgba(255,255,255,.06);
+      --card2: rgba(255,255,255,.09);
+      --line: rgba(255,255,255,.12);
+      --text: #eef5ff;
+      --muted: rgba(238,245,255,.70);
+
+      --accent: #1fb3df;   /* electric blue */
+      --accent2:#0b6d97;   /* deeper blue */
+      --good: #35d07f;
+
+      --shadow: 0 18px 50px rgba(0,0,0,.45);
+      --radius: 22px;
+      --radius2: 16px;
+      --max: 1120px;
+
       --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
     }
-    *{box-sizing:border-box}
+
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
     body{
       margin:0;
-      font-family:var(--font);
-      color:var(--text);
+      font-family: var(--font);
+      color: var(--text);
+
+      /* No page scrolling (your request) */
+      overflow: hidden;
+
       background:
-        radial-gradient(1200px 700px at 15% 0%, rgba(255,45,45,.18), transparent 55%),
-        radial-gradient(1000px 600px at 85% 10%, rgba(53,208,127,.12), transparent 60%),
+        radial-gradient(1100px 650px at 12% 8%, rgba(31,179,223,.22), transparent 58%),
+        radial-gradient(900px 550px at 88% 18%, rgba(53,208,127,.10), transparent 60%),
+        radial-gradient(900px 520px at 55% 110%, rgba(11,109,151,.18), transparent 55%),
         var(--bg);
-      line-height:1.35;
     }
-    a{color:inherit}
-    .wrap{max-width:var(--max); margin:0 auto; padding:28px 18px 70px}
-    header{
-      display:flex; align-items:center; justify-content:space-between; gap:12px;
-      padding:12px 0 24px;
+
+    a{ color: inherit; text-decoration:none; }
+    button{ font-family: inherit; }
+
+    .wrap{
+      height: 100%;
+      display:flex;
+      align-items: stretch;
+      justify-content: center;
+      padding: 14px;
     }
-    .brand{
-      display:flex; gap:12px; align-items:center;
+
+    .shell{
+      width: 100%;
+      max-width: var(--max);
+      height: 100%;
+      display:flex;
+      flex-direction: column;
+      gap: 12px;
     }
-    .logo{
-      width:44px; height:44px; border-radius:14px;
-      background: linear-gradient(135deg, rgba(255,45,45,.95), rgba(255,45,45,.35));
-      box-shadow: var(--shadow);
-      position:relative;
-      overflow:hidden;
-    }
-    .logo::after{
-      content:"";
-      position:absolute; inset:10px 12px 12px 10px;
-      border:2px solid rgba(255,255,255,.55);
-      border-radius:12px;
-      transform: rotate(8deg);
-      opacity:.65;
-    }
-    .brand h1{font-size:16px; margin:0}
-    .brand p{margin:2px 0 0; color:var(--muted); font-size:13px}
-    .btn{
-      border:1px solid rgba(255,255,255,.14);
-      background: rgba(18,26,35,.55);
-      color:var(--text);
-      padding:10px 14px;
-      border-radius:999px;
-      text-decoration:none;
-      display:inline-flex; gap:10px; align-items:center;
-      box-shadow: 0 8px 18px rgba(0,0,0,.25);
-      cursor:pointer;
-      transition: transform .08s ease, border-color .12s ease, background .12s ease;
-      user-select:none;
-    }
-    .btn:hover{transform: translateY(-1px); border-color: rgba(255,255,255,.22); background: rgba(18,26,35,.75);}
-    .btn.primary{
-      background: linear-gradient(135deg, rgba(255,45,45,.95), rgba(255,45,45,.6));
-      border-color: rgba(255,45,45,.2);
-    }
-    .btn.primary:hover{border-color: rgba(255,255,255,.22)}
-    .pill{
-      font-size:12px; color:var(--muted);
-      border:1px solid rgba(255,255,255,.12);
-      padding:6px 10px; border-radius:999px;
-      display:inline-flex; gap:8px; align-items:center;
-      background: rgba(18,26,35,.4);
-    }
-    .grid{
-      display:grid;
-      grid-template-columns: 1.15fr .85fr;
-      gap:18px;
-      margin-top:14px;
-    }
-    @media (max-width: 940px){
-      .grid{grid-template-columns:1fr; }
-      header{flex-wrap:wrap}
-    }
-    .hero{
-      background: rgba(18,26,35,.5);
-      border:1px solid rgba(255,255,255,.10);
+
+    /* Top bar */
+    .topbar{
+      display:flex;
+      align-items:center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 14px;
+      border: 1px solid var(--line);
+      background: rgba(0,0,0,.16);
+      backdrop-filter: blur(10px);
       border-radius: var(--radius);
-      padding: 22px;
       box-shadow: var(--shadow);
-      overflow:hidden;
-      position:relative;
     }
-    .hero::before{
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .brand-logo{
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: linear-gradient(135deg, rgba(31,179,223,.95), rgba(11,109,151,.55));
+      box-shadow: 0 10px 26px rgba(0,0,0,.35);
+      position: relative;
+      overflow:hidden;
+      flex: 0 0 auto;
+    }
+    .brand-logo:before{
       content:"";
       position:absolute;
-      width:520px; height:520px;
-      background: radial-gradient(circle at 30% 30%, rgba(255,45,45,.18), transparent 55%);
-      top:-280px; left:-260px;
-      pointer-events:none;
+      inset: 10px 12px 12px 10px;
+      border-radius: 12px;
+      border: 2px solid rgba(255,255,255,.55);
+      transform: rotate(8deg);
+      opacity: .6;
     }
-    .hero h2{margin: 0 0 10px; font-size: 34px; letter-spacing:-.02em}
-    .hero .sub{margin: 0 0 16px; color:var(--muted); font-size:15px; max-width: 56ch}
-    .hero .row{display:flex; flex-wrap:wrap; gap:10px; align-items:center}
-    .hero .kpis{
+
+    .brand-text{
+      min-width: 0;
+      display:flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .brand-text .name{
+      font-weight: 900;
+      letter-spacing: .02em;
+      font-size: 14px;
+      white-space: nowrap;
+      overflow:hidden;
+      text-overflow: ellipsis;
+    }
+    .brand-text .tagline{
+      font-size: 12px;
+      color: var(--muted);
+      white-space: nowrap;
+      overflow:hidden;
+      text-overflow: ellipsis;
+    }
+
+    .actions{
+      display:flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .btn{
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      color: var(--text);
+      padding: 10px 12px;
+      border-radius: 999px;
+      display:inline-flex;
+      gap: 10px;
+      align-items:center;
+      font-weight: 800;
+      cursor:pointer;
+      user-select:none;
+      transition: transform .08s ease, border-color .12s ease, background .12s ease;
+    }
+    .btn:hover{
+      transform: translateY(-1px);
+      border-color: rgba(31,179,223,.38);
+      background: rgba(255,255,255,.09);
+    }
+    .btn.primary{
+      border-color: transparent;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+    }
+    .btn.primary:hover{ border-color: transparent; }
+
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.16);
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+    }
+    .pill strong{ color: var(--text); }
+
+    /* Main grid */
+    .grid{
+      flex: 1 1 auto;
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 12px;
+      min-height: 0; /* so children can be sized properly */
+    }
+    @media (max-width: 980px){
+      .grid{ grid-template-columns: 1fr; }
+    }
+
+    .panel{
+      border: 1px solid var(--line);
+      background: rgba(0,0,0,.16);
+      backdrop-filter: blur(10px);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      min-height: 0;
+    }
+
+    .hero{
+      display:flex;
+      flex-direction: column;
+      min-height: 0;
+    }
+
+    .hero-top{
+      padding: 14px;
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .logoCard{
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+      border-radius: var(--radius2);
+      padding: 10px;
+      overflow:hidden;
+    }
+    .logoCard img{
+      width: 100%;
+      height: auto;
+      display:block;
+      border-radius: 14px;
+      background: rgba(255,255,255,.03);
+    }
+
+    .hero h1{
+      margin:0;
+      font-size: clamp(22px, 2.4vw, 34px);
+      letter-spacing: -0.02em;
+      line-height: 1.05;
+    }
+    .hero p{
+      margin:0;
+      color: var(--muted);
+      font-size: 14px;
+      max-width: 62ch;
+    }
+
+    .quickRow{
+      display:flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items:center;
+    }
+
+    .tiles{
       display:grid;
       grid-template-columns: repeat(3, minmax(0,1fr));
-      gap:10px;
-      margin-top:16px;
+      gap: 10px;
+      padding: 0 14px 14px;
     }
-    @media (max-width: 560px){
-      .hero h2{font-size:28px}
-      .hero .kpis{grid-template-columns:1fr}
+    @media (max-width: 520px){
+      .tiles{ grid-template-columns: 1fr; }
     }
-    .kpi{
-      background: rgba(0,0,0,.16);
-      border:1px solid rgba(255,255,255,.08);
-      border-radius: 16px;
-      padding: 12px 12px;
-    }
-    .kpi b{display:block; font-size:14px}
-    .kpi span{color:var(--muted); font-size:12px}
-    .panel{
-      background: rgba(18,26,35,.5);
-      border:1px solid rgba(255,255,255,.10);
-      border-radius: var(--radius);
-      padding: 18px;
-      box-shadow: var(--shadow);
-    }
-    .panel h3{margin: 0 0 12px; font-size:16px}
-    .divider{height:1px; background: rgba(255,255,255,.10); margin:14px 0}
-    .services{
-      display:grid;
-      grid-template-columns: repeat(2, minmax(0,1fr));
-      gap:10px;
-    }
-    @media (max-width: 560px){ .services{grid-template-columns:1fr} }
-    .card{
-      background: rgba(0,0,0,.16);
-      border:1px solid rgba(255,255,255,.08);
-      border-radius: 16px;
+
+    .tile{
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.05);
+      border-radius: var(--radius2);
       padding: 12px;
+      min-height: 78px;
     }
-    .card b{display:flex; justify-content:space-between; gap:10px}
-    .tag{
-      font-size:11px;
-      padding: 3px 8px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.12);
+    .tile b{
+      display:block;
+      font-size: 13px;
+      letter-spacing: .01em;
+    }
+    .tile span{
+      display:block;
+      margin-top: 6px;
       color: var(--muted);
-      white-space:nowrap;
+      font-size: 12px;
     }
-    .card p{margin:8px 0 0; color:var(--muted); font-size:13px}
+
+    /* Booking panel */
+    .book{
+      display:flex;
+      flex-direction: column;
+      min-height: 0;
+    }
+
+    .bookHead{
+      padding: 14px 14px 10px;
+      display:flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .bookHead h2{
+      margin:0;
+      font-size: 16px;
+      letter-spacing: .01em;
+    }
+    .bookHead .mini{
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
     form{
+      padding: 0 14px 14px;
       display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:10px;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      min-height: 0;
     }
-    @media (max-width: 560px){ form{grid-template-columns:1fr} }
-    label{display:block; font-size:12px; color:var(--muted); margin:2px 0 6px}
+    @media (max-width: 520px){
+      form{ grid-template-columns: 1fr; }
+    }
+
+    label{
+      display:block;
+      font-size: 12px;
+      color: var(--muted);
+      font-weight: 900;
+      margin: 2px 0 6px;
+      letter-spacing: .01em;
+    }
+
     input, select, textarea{
       width:100%;
-      background: rgba(0,0,0,.18);
-      border:1px solid rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
       color: var(--text);
       border-radius: 14px;
       padding: 10px 12px;
-      outline:none;
+      outline: none;
     }
-    textarea{min-height: 92px; resize: vertical}
-    input:focus, select:focus, textarea:focus{border-color: rgba(255,45,45,.55)}
-    .full{grid-column: 1 / -1}
-    .note{font-size:12px; color:var(--muted); margin:10px 0 0}
-    .footer{
-      margin-top:18px;
+    textarea{
+      min-height: 84px;
+      resize: none;
+    }
+    input:focus, select:focus, textarea:focus{
+      border-color: rgba(31,179,223,.55);
+      box-shadow: 0 0 0 4px rgba(31,179,223,.12);
+    }
+
+    .full{ grid-column: 1 / -1; }
+
+    .submitRow{
+      display:flex;
+      flex-wrap:wrap;
+      gap: 10px;
+      align-items:center;
+      justify-content: space-between;
+      margin-top: 2px;
+    }
+
+    .fine{
       color: var(--muted);
-      font-size:12px;
-      display:flex; flex-wrap:wrap; gap:10px; justify-content:space-between; align-items:center;
+      font-size: 12px;
+      margin: 0;
+      line-height: 1.25;
     }
-    .mini{
-      display:flex; gap:10px; flex-wrap:wrap; align-items:center;
+
+    /* Footer strip */
+    .foot{
+      display:flex;
+      align-items:center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 10px 14px;
+      border: 1px solid var(--line);
+      background: rgba(0,0,0,.16);
+      backdrop-filter: blur(10px);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+      flex-wrap: wrap;
     }
+
+    /* Modal */
+    .modalOverlay{
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.55);
+      display:none;
+      align-items: center;
+      justify-content: center;
+      padding: 14px;
+      z-index: 50;
+    }
+    .modalOverlay.show{ display:flex; }
+
+    .modal{
+      width: 100%;
+      max-width: 980px;
+      max-height: min(82vh, 720px);
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,.14);
+      background:
+        radial-gradient(900px 520px at 10% 0%, rgba(31,179,223,.18), transparent 55%),
+        rgba(11,15,20,.96);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      display:flex;
+      flex-direction: column;
+      min-height: 0;
+    }
+
+    .modalTop{
+      padding: 12px 14px;
+      display:flex;
+      align-items:center;
+      justify-content: space-between;
+      gap: 10px;
+      border-bottom: 1px solid rgba(255,255,255,.10);
+    }
+    .modalTop b{
+      font-size: 14px;
+      letter-spacing: .02em;
+    }
+    .xbtn{
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      color: var(--text);
+      border-radius: 999px;
+      padding: 8px 10px;
+      cursor:pointer;
+      font-weight: 900;
+    }
+    .xbtn:hover{ border-color: rgba(31,179,223,.45); }
+
+    .modalBody{
+      padding: 14px;
+      overflow: auto;  /* content can scroll inside modal */
+      min-height: 0;
+    }
+
+    /* Packages cards inside modal */
+    .pkgGrid{
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 12px;
+    }
+    @media (max-width: 720px){
+      .pkgGrid{ grid-template-columns: 1fr; }
+    }
+
+    .pkg{
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+      border-radius: 18px;
+      padding: 12px;
+    }
+
+    .pkgHead{
+      display:flex;
+      align-items:flex-start;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    .pkgHead .title{
+      font-weight: 1000;
+      letter-spacing: .02em;
+      font-size: 14px;
+    }
+    .badge{
+      font-size: 11px;
+      font-weight: 900;
+      color: rgba(238,245,255,.92);
+      border: 1px solid rgba(31,179,223,.35);
+      background: rgba(31,179,223,.12);
+      padding: 4px 8px;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+    .pkg p{
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.25;
+    }
+    .list{
+      margin: 10px 0 0;
+      padding: 0;
+      list-style: none;
+      display:grid;
+      gap: 6px;
+    }
+    .list li{
+      display:flex;
+      gap: 10px;
+      align-items:flex-start;
+      font-size: 13px;
+      color: rgba(238,245,255,.88);
+    }
+    .dot{
+      width: 9px; height: 9px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      margin-top: 5px;
+      flex: 0 0 auto;
+    }
+
+    /* Reviews / Gallery blocks */
+    .twoCol{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    @media (max-width: 820px){
+      .twoCol{ grid-template-columns: 1fr; }
+    }
+
+    .quote{
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+      border-radius: 18px;
+      padding: 12px;
+    }
+    .quote b{
+      display:flex;
+      align-items:center;
+      justify-content: space-between;
+      gap: 10px;
+      font-size: 13px;
+      letter-spacing: .01em;
+    }
+    .stars{ color: rgba(255,255,255,.9); font-size: 12px; }
+    .quote p{
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.25;
+    }
+
+    .gallery{
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 12px;
+    }
+    @media (max-width: 620px){
+      .gallery{ grid-template-columns: 1fr; }
+    }
+    .ph{
+      border: 1px dashed rgba(255,255,255,.22);
+      background: rgba(255,255,255,.04);
+      border-radius: 18px;
+      padding: 12px;
+      min-height: 140px;
+      display:flex;
+      flex-direction: column;
+      gap: 8px;
+      justify-content: center;
+      align-items: flex-start;
+    }
+    .ph b{ font-size: 13px; }
+    .ph span{ color: var(--muted); font-size: 12px; line-height: 1.25; }
+    .hint{
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 10px;
+      line-height: 1.25;
+    }
+
+    /* Small help text */
+    .help{
+      display:flex;
+      flex-wrap:wrap;
+      gap: 10px;
+      align-items:center;
+      margin-top: 10px;
+    }
+
     .ok{
-      display:inline-flex; gap:8px; align-items:center;
-      padding:6px 10px;
-      border-radius:999px;
-      border:1px solid rgba(53,208,127,.25);
-      background: rgba(53,208,127,.08);
-      color: rgba(232,238,246,.92);
-      font-size:12px;
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(53,208,127,.25);
+      background: rgba(53,208,127,.10);
+      color: rgba(238,245,255,.95);
+      font-size: 12px;
+      font-weight: 900;
     }
   </style>
 </head>
 
 <body>
   <div class="wrap">
-    <header>
-      <div class="brand">
-        <div class="logo" aria-hidden="true"></div>
-        <div>
-          <h1>Henderson Detailing</h1>
-          <p>On-Site Detailing • Fort Worth, TX</p>
+    <div class="shell">
+
+      <!-- Top bar -->
+      <div class="topbar">
+        <div class="brand">
+          <div class="brand-logo" aria-hidden="true"></div>
+          <div class="brand-text">
+            <div class="name">Henderson Detailing</div>
+            <div class="tagline">On-Site Detailing • Vacuum • Wash • Deep Clean • Refresh</div>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button class="btn" type="button" data-open="packages">🧼 Packages</button>
+          <button class="btn" type="button" data-open="reviews">⭐ Reviews</button>
+          <button class="btn" type="button" data-open="gallery">📸 Before/After</button>
+          <a class="btn primary" href="#book" onclick="document.getElementById('name').focus()">📅 Book</a>
         </div>
       </div>
-      <div class="mini">
-        <span class="pill">🚗 We come to you</span>
-        <a class="btn" href="#services">Services</a>
-        <a class="btn primary" href="#book">Request Appointment</a>
-      </div>
-    </header>
 
-    <div class="grid">
-      <section class="hero">
-        <h2>Mobile detailing that fits your schedule.</h2>
-        <p class="sub">
-          Tell us what you need and when you’re available. We’ll confirm by text and show up ready to make your ride look unfairly clean. 🧼✨
-        </p>
+      <!-- Main -->
+      <div class="grid">
 
-        <div class="row">
-          <a class="btn primary" href="#book">📅 Request an appointment</a>
-          <a class="btn" href="tel:+1YOURNUMBERHERE">📞 Call / Text</a>
-          <a class="btn" href="sms:+1YOURNUMBERHERE">💬 Text now</a>
-        </div>
+        <!-- Left: hero -->
+        <div class="panel hero">
+          <div class="hero-top">
+            <!-- Upload your logo file into the same GitHub folder as index.html -->
+            <div class="logoCard">
+              <img src="logo.png" alt="Henderson Detailing logo" />
+            </div>
 
-        <div class="hero kpis" aria-label="Quick highlights">
-          <div class="kpi">
-            <b>On-site service</b>
-            <span>Home • Work • Anywhere in the area</span>
-          </div>
-          <div class="kpi">
-            <b>Fast confirmations</b>
-            <span>We reply ASAP with exact time + price</span>
-          </div>
-          <div class="kpi">
-            <b>Simple payment</b>
-            <span>Cash • Cash App • Zelle (backup)</span>
-          </div>
-        </div>
-      </section>
-
-      <aside class="panel" id="book">
-        <h3>Request an appointment</h3>
-        <div class="ok">✅ No account needed • We confirm by text</div>
-        <div class="divider"></div>
-
-        <form id="bookingForm">
-          <div>
-            <label for="name">Name</label>
-            <input id="name" name="name" placeholder="Your name" required />
-          </div>
-          <div>
-            <label for="phone">Phone (for confirmation)</label>
-            <input id="phone" name="phone" placeholder="(817) 555-1234" required />
-          </div>
-
-          <div class="full">
-            <label for="address">Service address (where we come to you)</label>
-            <input id="address" name="address" placeholder="Street + City (Fort Worth / nearby)" required />
-          </div>
-
-          <div>
-            <label for="vehicle">Vehicle</label>
-            <input id="vehicle" name="vehicle" placeholder="e.g., 2018 Honda Civic" required />
-          </div>
-          <div>
-            <label for="service">Service</label>
-            <select id="service" name="service" required>
-              <option value="" selected disabled>Select one</option>
-              <option>Interior Refresh</option>
-              <option>Exterior Wash & Shine</option>
-              <option>Full Detail (Interior + Exterior)</option>
-              <option>Deep Clean (Heavy Interior)</option>
-            </select>
-          </div>
-
-          <div>
-            <label for="date">Preferred date</label>
-            <input id="date" name="date" type="date" required />
-          </div>
-          <div>
-            <label for="window">Time window</label>
-            <select id="window" name="window" required>
-              <option value="" selected disabled>Pick a window</option>
-              <option>Morning (8–11)</option>
-              <option>Midday (11–2)</option>
-              <option>Afternoon (2–5)</option>
-              <option>Evening (5–8)</option>
-            </select>
-          </div>
-
-          <div class="full">
-            <label for="notes">Notes (pets, heavy stains, request add-ons, etc.)</label>
-            <textarea id="notes" name="notes" placeholder="Example: dog hair + coffee spill, want it looking new 🙏"></textarea>
-          </div>
-
-          <div class="full">
-            <button class="btn primary" type="submit">Send request</button>
-            <p class="note">
-              By sending, you’re requesting an appointment. We’ll confirm the exact time + total price by text.
+            <h1>Clean that looks expensive. Convenience that feels unfair. ⚡</h1>
+            <p>
+              We’re mobile and come to you. Pick a package, request a time window, and we’ll confirm by text.
+              No guessing. No hassle. Just a sharp finish.
             </p>
+
+            <div class="quickRow">
+              <span class="pill">📍 <strong>On-Site</strong> at home/work</span>
+              <span class="pill">⚡ <strong>Fast reply</strong> by text</span>
+              <span class="pill">✅ <strong>Simple</strong> packages</span>
+            </div>
+
+            <div class="quickRow">
+              <a class="btn" href="tel:+19032156649">📞 Call / Text</a>
+              <a class="btn" href="sms:+19032156649">💬 Text now</a>
+              <button class="btn" type="button" data-open="packages">See packages →</button>
+            </div>
           </div>
-        </form>
 
-        <div class="footer">
-          <span>© <span id="year"></span> Henderson Detailing</span>
-          <span>Serving Fort Worth + nearby</span>
+          <div class="tiles">
+            <div class="tile">
+              <b>Interior focus</b>
+              <span>Vacuum • wipe-down • glass • detail work</span>
+            </div>
+            <div class="tile">
+              <b>Exterior shine</b>
+              <span>Hand wash • wheels/tires • finish touch</span>
+            </div>
+            <div class="tile">
+              <b>Real results</b>
+              <span>Before/after photos + reviews on page</span>
+            </div>
+          </div>
         </div>
-      </aside>
-    </div>
 
-    <section class="panel" id="services" style="margin-top:18px;">
-      <h3>Popular services</h3>
-      <div class="services">
-        <div class="card">
-          <b>Interior Refresh <span class="tag">Best for maintenance</span></b>
-          <p>Vacuum, wipe-down, windows, light spot cleaning.</p>
-        </div>
-        <div class="card">
-          <b>Exterior Wash & Shine <span class="tag">Quick clean</span></b>
-          <p>Hand wash, wheels, dry, quick shine.</p>
-        </div>
-        <div class="card">
-          <b>Full Detail <span class="tag">Most booked</span></b>
-          <p>Interior + exterior with extra attention to the details.</p>
-        </div>
-        <div class="card">
-          <b>Deep Clean <span class="tag">Heavy interior</span></b>
-          <p>Stains, pet hair, spills—quote depends on condition.</p>
+        <!-- Right: booking -->
+        <div class="panel book" id="book">
+          <div class="bookHead">
+            <div>
+              <h2>Request an appointment</h2>
+              <div class="mini">We confirm exact time + price by text</div>
+            </div>
+            <div class="ok">✅ No account</div>
+          </div>
+
+          <form id="bookingForm">
+            <div>
+              <label for="name">Name</label>
+              <input id="name" name="name" placeholder="Your name" required />
+            </div>
+
+            <div>
+              <label for="phone">Phone</label>
+              <input id="phone" name="phone" inputmode="tel" placeholder="903-215-6649" required />
+            </div>
+
+            <div class="full">
+              <label for="address">Service address</label>
+              <input id="address" name="address" placeholder="Street + City" required />
+            </div>
+
+            <div>
+              <label for="vehicle">Vehicle</label>
+              <input id="vehicle" name="vehicle" placeholder="e.g., 2019 Camry" required />
+            </div>
+
+            <div>
+              <label for="tier">Package</label>
+              <select id="tier" name="tier" required>
+                <option value="" selected disabled>Select a package</option>
+                <option>Double Sniff — Interior Freshen</option>
+                <option>1st Date — Inside + Outside</option>
+                <option>Factory Clean — Deep Interior Reset</option>
+                <option>Champions Club — Full In/Out Refresh + Shine</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="date">Preferred date</label>
+              <input id="date" name="date" type="date" required />
+            </div>
+
+            <div>
+              <label for="window">Time window</label>
+              <select id="window" name="window" required>
+                <option value="" selected disabled>Pick a window</option>
+                <option>Morning (8–11)</option>
+                <option>Midday (11–2)</option>
+                <option>Afternoon (2–5)</option>
+                <option>Evening (5–8)</option>
+              </select>
+            </div>
+
+            <div class="full">
+              <label for="notes">Notes (pet hair, stains, priorities)</label>
+              <textarea id="notes" name="notes" placeholder="Example: dog hair + coffee spill, focus seats + carpets"></textarea>
+            </div>
+
+            <div class="full">
+              <div class="submitRow">
+                <button class="btn primary" type="submit">Send request</button>
+                <p class="fine">
+                  Prefer instant contact? <a href="sms:+19032156649" style="text-decoration:underline;">Text us</a>.
+                </p>
+              </div>
+              <p class="fine" style="margin-top:10px;">
+                Payments: Cash • Cash App • Zelle (backup). Serving local on-site jobs.
+              </p>
+            </div>
+          </form>
         </div>
       </div>
-      <div class="divider"></div>
-      <p class="note">
-        Pricing varies by vehicle size + condition. We’ll confirm a fair price after you send the request.
-      </p>
-    </section>
+
+      <!-- Footer -->
+      <div class="foot">
+        <span>© <span id="year"></span> Henderson Detailing</span>
+        <span>Built for quick booking • no clutter • all signal</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Modal overlay -->
+  <div class="modalOverlay" id="overlay" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal" role="document" aria-label="Details panel">
+      <div class="modalTop">
+        <b id="modalTitle">Panel</b>
+        <button class="xbtn" type="button" id="closeBtn">✕ Close</button>
+      </div>
+      <div class="modalBody" id="modalBody"></div>
+    </div>
   </div>
 
   <script>
-    // Set min date to today (local)
-    const dateInput = document.getElementById('date');
-    const today = new Date();
-    const yyyy = today.getFullYear();
-    const mm = String(today.getMonth() + 1).padStart(2,'0');
-    const dd = String(today.getDate()).padStart(2,'0');
-    dateInput.min = `${yyyy}-${mm}-${dd}`;
+    // ===== Config you might tweak later =====
+    const BUSINESS_EMAIL = "YOURBUSINESSEMAIL@EXAMPLE.COM"; // optional mailto fallback
+    const PHONE_E164 = "+19032156649";
 
+    // Keep date min = today
+    const dateInput = document.getElementById('date');
+    const now = new Date();
+    const yyyy = now.getFullYear();
+    const mm = String(now.getMonth() + 1).padStart(2,'0');
+    const dd = String(now.getDate()).padStart(2,'0');
+    dateInput.min = `${yyyy}-${mm}-${dd}`;
     document.getElementById('year').textContent = yyyy;
 
-    // Mailto-based submission (no backend)
+    // Modal content templates
+    const templates = {
+      packages: () => `
+        <div class="pkgGrid">
+          <div class="pkg">
+            <div class="pkgHead">
+              <div class="title">Double Sniff</div>
+              <div class="badge">Interior Freshen</div>
+            </div>
+            <p>Quick, clean, and sharp — perfect for maintenance or “my car is kinda embarrassing.”</p>
+            <ul class="list">
+              <li><span class="dot"></span> Full interior vacuum (seats + floors + mats)</li>
+              <li><span class="dot"></span> Wipe-down of dash/console/door panels</li>
+              <li><span class="dot"></span> Interior glass + mirrors</li>
+            </ul>
+          </div>
+
+          <div class="pkg">
+            <div class="pkgHead">
+              <div class="title">1st Date</div>
+              <div class="badge">Inside + Outside</div>
+            </div>
+            <p>Clean inside, clean outside — the “look put-together” package.</p>
+            <ul class="list">
+              <li><span class="dot"></span> Everything in Double Sniff</li>
+              <li><span class="dot"></span> Hand wash exterior</li>
+              <li><span class="dot"></span> Wheels + tire cleaning (includes tire face)</li>
+            </ul>
+          </div>
+
+          <div class="pkg">
+            <div class="pkgHead">
+              <div class="title">Factory Clean</div>
+              <div class="badge">Deep Interior Reset</div>
+            </div>
+            <p>For spills, buildup, and “how did this happen?” interiors. Big difference, fast.</p>
+            <ul class="list">
+              <li><span class="dot"></span> Deep vacuum + detail crevices</li>
+              <li><span class="dot"></span> Thorough interior wipe-down + attention areas</li>
+              <li><span class="dot"></span> Interior windows (in/out where accessible)</li>
+            </ul>
+          </div>
+
+          <div class="pkg">
+            <div class="pkgHead">
+              <div class="title">Champions Club</div>
+              <div class="badge">Full In/Out Refresh + Shine</div>
+            </div>
+            <p>The full glow-up: interior reset plus exterior finish that looks premium.</p>
+            <ul class="list">
+              <li><span class="dot"></span> Factory Clean interior treatment</li>
+              <li><span class="dot"></span> Hand wash + wheels/tires + finishing touch</li>
+              <li><span class="dot"></span> Final wipe + presentation pass</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="help">
+          <span class="ok">✅ We confirm price by text</span>
+          <span class="hint">
+            Condition + vehicle size affects pricing. Text photos for fastest quote:
+            <a href="sms:${PHONE_E164}" style="text-decoration:underline;">${PHONE_E164}</a>
+          </span>
+        </div>
+      `,
+
+      reviews: () => `
+        <div class="twoCol">
+          <div class="quote">
+            <b>“Looked brand new.” <span class="stars">★★★★★</span></b>
+            <p>Replace this with a real customer review. Keep it short, specific, and believable.</p>
+          </div>
+          <div class="quote">
+            <b>“Fast, professional, showed up on time.” <span class="stars">★★★★★</span></b>
+            <p>Another review goes here. Once you have 3–6, this section becomes a trust machine.</p>
+          </div>
+          <div class="quote">
+            <b>“Interior reset was insane.” <span class="stars">★★★★★</span></b>
+            <p>Drop in your best “Factory Clean” testimonial when you get it.</p>
+          </div>
+          <div class="quote">
+            <b>“Worth it.” <span class="stars">★★★★★</span></b>
+            <p>Keep the tone natural — no corporate robot reviews. Real talk wins.</p>
+          </div>
+        </div>
+
+        <div class="hint">
+          Tip: copy/paste reviews from texts (with permission) and use first name + initial (e.g., “Marcus T.”).
+        </div>
+      `,
+
+      gallery: () => `
+        <div class="gallery">
+          <div class="ph">
+            <b>Before / After #1</b>
+            <span>Upload two images and replace this placeholder with real photos.</span>
+          </div>
+          <div class="ph">
+            <b>Before / After #2</b>
+            <span>Even 2 solid sets is enough to boost conversions a lot.</span>
+          </div>
+          <div class="ph">
+            <b>Before / After #3</b>
+            <span>Keep lighting similar. Shoot the same angle if possible.</span>
+          </div>
+          <div class="ph">
+            <b>Before / After #4</b>
+            <span>Close-ups: cup holders, seats, floor mats, door panels.</span>
+          </div>
+        </div>
+
+        <div class="hint">
+          Want this section to show real images? Upload files like <b>before1.jpg</b>, <b>after1.jpg</b> to your repo and I’ll wire them in cleanly.
+        </div>
+      `
+    };
+
+    // Modal logic
+    const overlay = document.getElementById('overlay');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalBody = document.getElementById('modalBody');
+    const closeBtn = document.getElementById('closeBtn');
+
+    function openModal(which){
+      modalTitle.textContent =
+        which === 'packages' ? 'Packages' :
+        which === 'reviews' ? 'Reviews' :
+        which === 'gallery' ? 'Before / After' :
+        'Details';
+
+      modalBody.innerHTML = (templates[which] ? templates[which]() : '<p>Missing content.</p>');
+      overlay.classList.add('show');
+      overlay.setAttribute('aria-hidden','false');
+    }
+
+    function closeModal(){
+      overlay.classList.remove('show');
+      overlay.setAttribute('aria-hidden','true');
+      modalBody.innerHTML = '';
+    }
+
+    document.querySelectorAll('[data-open]').forEach(btn => {
+      btn.addEventListener('click', () => openModal(btn.getAttribute('data-open')));
+    });
+
+    closeBtn.addEventListener('click', closeModal);
+    overlay.addEventListener('click', (e) => { if(e.target === overlay) closeModal(); });
+    document.addEventListener('keydown', (e) => { if(e.key === 'Escape') closeModal(); });
+
+    // Booking submission:
+    // Default = SMS prefill (best for mobile). If SMS fails, mailto fallback.
     document.getElementById('bookingForm').addEventListener('submit', function(e){
       e.preventDefault();
-
       const data = Object.fromEntries(new FormData(e.target).entries());
 
-      const subject = encodeURIComponent(`Detailing Request — ${data.name} (${data.vehicle})`);
-      const body = encodeURIComponent(
-`New appointment request:
+      const msg =
+`Henderson Detailing booking request:
 
 Name: ${data.name}
 Phone: ${data.phone}
 Address: ${data.address}
 Vehicle: ${data.vehicle}
-Service: ${data.service}
+Package: ${data.tier}
 Preferred date: ${data.date}
 Time window: ${data.window}
 
-Notes:
-${data.notes || "(none)"}
+Notes: ${data.notes || "(none)"}`;
 
-— Sent from Henderson Detailing landing page`
-      );
+      // Try SMS first (best UX on phones)
+      const smsUrl = `sms:${PHONE_E164}?body=${encodeURIComponent(msg)}`;
 
-      // TODO: Replace with your business email
-      const yourEmail = "YOURBUSINESSEMAIL@EXAMPLE.COM";
+      // Mailto fallback if user wants email
+      const subject = encodeURIComponent(`Booking Request — ${data.name} (${data.vehicle})`);
+      const mailUrl = `mailto:${BUSINESS_EMAIL}?subject=${subject}&body=${encodeURIComponent(msg)}`;
 
-      window.location.href = `mailto:${yourEmail}?subject=${subject}&body=${body}`;
+      // Open SMS; if device blocks it, user can still call/text from buttons.
+      window.location.href = smsUrl;
+
+      // Small safety: if you want mailto instead, swap to: window.location.href = mailUrl;
     });
   </script>
 </body>
