@@ -1,670 +1,298 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-  <title>Henderson Detailing — On-Site Detailing</title>
-  <meta name="description" content="Mobile on-site detailing. Clear packages, real results, and quick booking." />
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
+<title>Fresh Start Mobile Detailing — On-Site Detailing</title>
 
-  <style>
-    :root{
-      --bg:#0b0f14;
-      --bg2:#0e1620;
-      --card: rgba(255,255,255,.06);
-      --line: rgba(255,255,255,.12);
-      --text:#eef5ff;
-      --muted: rgba(238,245,255,.70);
+<style>
+:root{
+--bg:#0b0f14;
+--text:#eef5ff;
+--muted:rgba(238,245,255,.75);
+--accent:#1fb3df;
+--accent2:#0b6d97;
+--line:rgba(255,255,255,.14);
+--radius:22px;
+--max:1120px;
+font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+}
 
-      --accent:#1fb3df;
-      --accent2:#0b6d97;
-      --good:#35d07f;
+*{box-sizing:border-box}
+body{
+margin:0;
+color:var(--text);
+background:
+linear-gradient(rgba(0,0,0,.65),rgba(0,0,0,.75)),
+url("background.jpg") center/cover fixed no-repeat;
+}
 
-      --shadow: 0 18px 55px rgba(0,0,0,.45);
-      --radius: 22px;
-      --radius2: 16px;
-      --max: 1120px;
+.wrap{max-width:var(--max);margin:auto;padding:20px 16px 80px;}
 
-      --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-    }
+.card{
+border:1px solid var(--line);
+background:rgba(0,0,0,.55);
+backdrop-filter:blur(4px);
+border-radius:var(--radius);
+margin-top:18px;
+}
 
-    *{ box-sizing:border-box; }
-    html, body{ height:100%; }
-    body{
-      margin:0;
-      font-family:var(--font);
-      color:var(--text);
-      background:
-        radial-gradient(1100px 650px at 12% 8%, rgba(31,179,223,.22), transparent 58%),
-        radial-gradient(900px 550px at 88% 18%, rgba(53,208,127,.10), transparent 60%),
-        radial-gradient(900px 520px at 55% 110%, rgba(11,109,151,.18), transparent 55%),
-        var(--bg);
-      line-height:1.35;
-    }
+.hero{
+padding:22px;
+display:flex;
+flex-direction:column;
+gap:12px;
+max-width:640px;
+}
 
-    a{ color:inherit; text-decoration:none; }
-    img{ max-width:100%; display:block; }
+h1{
+margin:0;
+font-size:clamp(30px,3vw,44px);
+line-height:1.05;
+text-shadow:0 2px 8px rgba(0,0,0,.6);
+}
 
-    .wrap{ max-width: var(--max); margin:0 auto; padding: 18px 16px 80px; }
+.lead{color:var(--muted);font-size:15px;}
 
-    section{ margin-top: 18px; }
+.brandline{
+display:flex;
+justify-content:space-between;
+font-weight:900;
+font-size:14px;
+flex-wrap:wrap;
+}
 
-    .card{
-      border:1px solid var(--line);
-      background: rgba(0,0,0,.16);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      overflow:hidden;
-    }
+.ctaRow{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px;}
 
-    .hero{
-      display:grid;
-      grid-template-columns: 1.05fr .95fr;
-      gap: 14px;
-      padding: 14px;
-    }
-    @media (max-width: 980px){
-      .hero{ grid-template-columns: 1fr; }
-    }
+.btn{
+border:1px solid var(--line);
+padding:10px 14px;
+border-radius:999px;
+font-weight:900;
+background:rgba(0,0,0,.45);
+cursor:pointer;
+}
 
-    .heroLeft{
-      padding: 6px;
-      display:flex;
-      flex-direction: column;
-      gap: 12px;
-    }
+.btn.primary{
+border:none;
+background:linear-gradient(135deg,var(--accent),var(--accent2));
+}
 
-    .logoCard{
-      border: 1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.05);
-      border-radius: var(--radius2);
-      padding: 10px;
-    }
-    .logoCard img{
-      border-radius: 14px;
-      background: rgba(255,255,255,.03);
-    }
+.sectionHead{padding:14px 18px 0;}
+.sectionHead h2{margin:0;font-size:18px;}
+.sectionHead p{color:var(--muted);font-size:13px;}
 
-    .brandline{
-      display:flex;
-      align-items:center;
-      justify-content: space-between;
-      gap: 12px;
-      flex-wrap: wrap;
-      padding: 2px 2px 0;
-    }
-    .brandline b{
-      font-weight: 1000;
-      letter-spacing:.02em;
-      font-size: 14px;
-    }
-    .brandline span{
-      color: var(--muted);
-      font-size: 12px;
-      font-weight: 800;
-      white-space: nowrap;
-    }
+.pkgGrid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:12px;
+padding:14px;
+}
+@media(max-width:900px){.pkgGrid{grid-template-columns:1fr}}
 
-    h1{
-      margin:0;
-      font-size: clamp(28px, 3.2vw, 44px);
-      letter-spacing: -0.03em;
-      line-height: 1.05;
-    }
-    .lead{
-      margin:0;
-      color: var(--muted);
-      font-size: 15px;
-      max-width: 65ch;
-    }
+.pkg{
+border:1px solid var(--line);
+background:rgba(0,0,0,.55);
+border-radius:18px;
+padding:14px;
+}
 
-    .chips{ display:flex; flex-wrap: wrap; gap:10px; }
-    .chip{
-      display:inline-flex;
-      align-items:center;
-      gap: 8px;
-      padding: 9px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.12);
-      background: rgba(0,0,0,.16);
-      color: var(--muted);
-      font-size: 12px;
-      font-weight: 900;
-    }
-    .chip strong{ color: var(--text); }
+.pkgTitle{font-weight:900;font-size:16px;}
+.pkgDesc{color:var(--muted);font-size:13px;margin-top:6px;}
 
-    .ctaRow{
-      display:flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      align-items:center;
-    }
+.list{list-style:none;padding:0;margin-top:10px;}
+.list li{font-size:13px;margin:6px 0;}
 
-    .btn{
-      border:1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.06);
-      color: var(--text);
-      padding:10px 12px;
-      border-radius:999px;
-      display:inline-flex;
-      gap:10px;
-      align-items:center;
-      font-weight: 900;
-      cursor:pointer;
-      transition: transform .08s ease, border-color .12s ease, background .12s ease;
-      user-select:none;
-      white-space: nowrap;
-    }
-    .btn:hover{
-      transform: translateY(-1px);
-      border-color: rgba(31,179,223,.38);
-      background: rgba(255,255,255,.09);
-    }
-    .btn.primary{
-      border-color: transparent;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-    }
-    .btn.primary:hover{ border-color: transparent; }
+.bookGrid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:12px;
+padding:14px;
+}
+@media(max-width:900px){.bookGrid{grid-template-columns:1fr}}
 
-    .heroRight{
-      padding: 6px;
-      display:flex;
-      flex-direction: column;
-      gap: 10px;
-    }
+form{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:10px;
+background:rgba(0,0,0,.55);
+border:1px solid var(--line);
+border-radius:18px;
+padding:14px;
+}
+@media(max-width:520px){form{grid-template-columns:1fr}}
 
-    .miniCard{
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.05);
-      border-radius: var(--radius2);
-      padding: 12px;
-    }
-    .miniCard b{ display:block; font-size: 13px; letter-spacing:.01em; }
-    .miniCard p{ margin:8px 0 0; color: var(--muted); font-size: 13px; line-height:1.25; }
+input,select,textarea{
+width:100%;
+background:rgba(0,0,0,.55);
+border:1px solid var(--line);
+color:var(--text);
+padding:10px;
+border-radius:14px;
+}
 
-    .sectionHead{
-      padding: 14px 14px 0;
-    }
-    .sectionHead h2{
-      margin:0;
-      font-size: 18px;
-      letter-spacing:.01em;
-    }
-    .sectionHead p{
-      margin:8px 0 0;
-      color: var(--muted);
-      font-size: 13px;
-      max-width: 75ch;
-    }
+textarea{grid-column:1/-1;min-height:90px;}
 
-    .pkgGrid{
-      display:grid;
-      grid-template-columns: repeat(2, minmax(0,1fr));
-      gap: 12px;
-      padding: 14px;
-    }
-    @media (max-width: 900px){
-      .pkgGrid{ grid-template-columns: 1fr; }
-    }
+.full{grid-column:1/-1;}
 
-    .pkg{
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.06);
-      border-radius: 18px;
-      padding: 14px;
-    }
-    .pkgTop{
-      display:flex;
-      align-items:flex-start;
-      justify-content: space-between;
-      gap: 10px;
-    }
-    .pkgTitle{
-      font-weight: 1000;
-      letter-spacing:.02em;
-      font-size: 16px;
-      margin:0;
-    }
-    .badge{
-      font-size: 11px;
-      font-weight: 900;
-      border: 1px solid rgba(31,179,223,.35);
-      background: rgba(31,179,223,.12);
-      padding: 4px 8px;
-      border-radius: 999px;
-      white-space: nowrap;
-    }
-    .pkgDesc{
-      margin: 8px 0 0;
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.25;
-    }
-    .list{
-      margin: 12px 0 0;
-      padding: 0;
-      list-style: none;
-      display:grid;
-      gap: 8px;
-    }
-    .list li{
-      display:flex;
-      gap: 10px;
-      align-items:flex-start;
-      font-size: 13px;
-      color: rgba(238,245,255,.9);
-    }
-    .dot{
-      width: 9px; height: 9px;
-      border-radius: 999px;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      margin-top: 5px;
-      flex: 0 0 auto;
-    }
-
-    .twoCol{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      padding: 14px;
-    }
-    @media (max-width: 900px){
-      .twoCol{ grid-template-columns: 1fr; }
-    }
-    .quote{
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.06);
-      border-radius: 18px;
-      padding: 14px;
-    }
-    .quote b{
-      display:flex;
-      justify-content: space-between;
-      gap: 10px;
-      font-size: 13px;
-      letter-spacing:.01em;
-    }
-    .quote p{
-      margin: 10px 0 0;
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.25;
-    }
-    .stars{ opacity: .9; font-size: 12px; }
-
-    .gallery{
-      display:grid;
-      grid-template-columns: repeat(4, minmax(0,1fr));
-      gap: 12px;
-      padding: 14px;
-    }
-    @media (max-width: 980px){ .gallery{ grid-template-columns: repeat(2, minmax(0,1fr)); } }
-    @media (max-width: 520px){ .gallery{ grid-template-columns: 1fr; } }
-
-    .ph{
-      border: 1px dashed rgba(255,255,255,.22);
-      background: rgba(255,255,255,.04);
-      border-radius: 18px;
-      padding: 14px;
-      min-height: 130px;
-      display:flex;
-      flex-direction: column;
-      gap: 8px;
-      justify-content: center;
-      align-items: flex-start;
-    }
-    .ph b{ font-size: 13px; }
-    .ph span{ color: var(--muted); font-size: 12px; line-height: 1.25; }
-
-    .bookGrid{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      padding: 14px;
-    }
-    @media (max-width: 900px){
-      .bookGrid{ grid-template-columns: 1fr; }
-    }
-
-    form{
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.06);
-      border-radius: 18px;
-      padding: 14px;
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-    }
-    @media (max-width: 520px){ form{ grid-template-columns: 1fr; } }
-
-    label{
-      display:block;
-      font-size: 12px;
-      color: var(--muted);
-      font-weight: 900;
-      margin: 2px 0 6px;
-      letter-spacing: .01em;
-    }
-    input, select, textarea{
-      width:100%;
-      border: 1px solid rgba(255,255,255,.12);
-      background: rgba(0,0,0,.18);
-      color: var(--text);
-      border-radius: 14px;
-      padding: 10px 12px;
-      outline: none;
-    }
-    textarea{ min-height: 92px; resize: vertical; grid-column: 1 / -1; }
-    input:focus, select:focus, textarea:focus{
-      border-color: rgba(31,179,223,.55);
-      box-shadow: 0 0 0 4px rgba(31,179,223,.12);
-    }
-    .full{ grid-column: 1 / -1; }
-
-    .fine{
-      margin: 10px 0 0;
-      color: var(--muted);
-      font-size: 12px;
-      line-height: 1.25;
-    }
-
-    .foot{
-      margin-top: 16px;
-      display:flex;
-      align-items:center;
-      justify-content: space-between;
-      gap: 10px;
-      flex-wrap: wrap;
-      color: var(--muted);
-      font-size: 12px;
-      font-weight: 900;
-      padding: 0 2px;
-    }
-  </style>
+.foot{
+margin-top:16px;
+font-size:12px;
+color:var(--muted);
+display:flex;
+justify-content:space-between;
+flex-wrap:wrap;
+}
+</style>
 </head>
 
 <body>
-  <main class="wrap">
-    <!-- HERO -->
-    <section class="card">
-      <div class="hero">
-        <div class="heroLeft">
-          <div class="logoCard">
-            <img src="logo.png" alt="Henderson Detailing logo" />
-          </div>
+<main class="wrap">
 
-          <div class="brandline">
-            <b>Henderson Detailing</b>
-            <span>On-Site Detailing • Call/Text: (903) 215-6649</span>
-          </div>
+<!-- HERO -->
+<section class="card">
+<div class="hero">
 
-          <h1>Mobile detailing that’s clean, fast, and actually professional.</h1>
-          <p class="lead">
-            We come to you. Pick a package, request a time window, and we’ll confirm by text.
-            Clean results, no clutter, no confusion.
-          </p>
+<div class="brandline">
+<b>Fresh Start Mobile Detailing</b>
+<span>On-Site Detailing • (903) 215-6649</span>
+</div>
 
-          <div class="chips">
-            <span class="chip">📍 <strong>On-site</strong> home/work</span>
-            <span class="chip">⚡ <strong>Fast reply</strong> by text</span>
-            <span class="chip">✅ <strong>Clear packages</strong></span>
-          </div>
+<h1>Mobile detailing that’s clean, fast, and professional.</h1>
 
-          <div class="ctaRow">
-            <a class="btn primary" href="#book">📅 Request an appointment</a>
-            <a class="btn" href="#packages">🧼 Packages</a>
-            <a class="btn" href="#reviews">⭐ Reviews</a>
-            <a class="btn" href="#gallery">📸 Before/After</a>
-            <a class="btn" href="tel:+19032156649">📞 Call</a>
-            <a class="btn" href="sms:+19032156649">💬 Text</a>
-          </div>
-        </div>
+<p class="lead">
+We come to you. Pick a package, request a time window, and we’ll confirm by text.
+</p>
 
-        <div class="heroRight">
-          <div class="miniCard">
-            <b>What customers care about</b>
-            <p>On-time arrival, honest pricing, and a finish that looks like you care.</p>
-          </div>
-          <div class="miniCard">
-            <b>How pricing works</b>
-            <p>Vehicle size + condition affects total. We confirm your exact price by text.</p>
-          </div>
-          <div class="miniCard">
-            <b>Payments</b>
-            <p>Cash • Cash App • Zelle (backup)</p>
-          </div>
-        </div>
-      </div>
-    </section>
+<div class="ctaRow">
+<a class="btn primary" href="#book">📅 Request Appointment</a>
+<a class="btn" href="#packages">🧼 Packages</a>
+<a class="btn" href="sms:+19032156649">💬 Text</a>
+<a class="btn" href="tel:+19032156649">📞 Call</a>
+</div>
 
-    <!-- PACKAGES -->
-    <section class="card" id="packages">
-      <div class="sectionHead">
-        <h2>Packages</h2>
-        <p>Fun names. Serious results. Pick your level and we’ll confirm price by text.</p>
-      </div>
+</div>
+</section>
 
-      <div class="pkgGrid">
-        <div class="pkg">
-          <div class="pkgTop">
-            <div>
-              <div class="pkgTitle">Basic</div>
-              <div class="pkgDesc">A quick interior reset for maintenance or light mess.</div>
-            </div>
-            <div class="badge">Interior Freshen</div>
-          </div>
-          <ul class="list">
-            <li><span class="dot"></span> Full interior vacuum (seats, floors, mats)</li>
-            <li><span class="dot"></span> Wipe-down: dash, console, door panels</li>
-            <li><span class="dot"></span> Interior windows + mirrors</li>
-          </ul>
-        </div>
+<!-- PACKAGES -->
+<section class="card" id="packages">
+<div class="sectionHead">
+<h2>Packages</h2>
+<p>Pick your level — price confirmed by text.</p>
+</div>
 
-        <div class="pkg">
-          <div class="pkgTop">
-            <div>
-              <div class="pkgTitle">1st Date</div>
-              <div class="pkgDesc">Clean inside and outside — the “looks put together” package.</div>
-            </div>
-            <div class="badge">Inside + Outside</div>
-          </div>
-          <ul class="list">
-            <li><span class="dot"></span> Everything in Basic</li>
-            <li><span class="dot"></span> Hand wash exterior</li>
-            <li><span class="dot"></span> Wheels + tire cleaning</li>
-          </ul>
-        </div>
+<div class="pkgGrid">
 
-        <div class="pkg">
-          <div class="pkgTop">
-            <div>
-              <div class="pkgTitle">Factory Clean</div>
-              <div class="pkgDesc">Deep interior reset for buildup, spills, and heavy use.</div>
-            </div>
-            <div class="badge">Deep Interior</div>
-          </div>
-          <ul class="list">
-            <li><span class="dot"></span> Deep vacuum + crevices detail</li>
-            <li><span class="dot"></span> Thorough wipe-down + focus areas</li>
-            <li><span class="dot"></span> Windows inside + outside (where accessible)</li>
-          </ul>
-        </div>
+<div class="pkg">
+<div class="pkgTitle">Basic</div>
+<div class="pkgDesc">Quick interior reset.</div>
+<ul class="list">
+<li>Full interior vacuum</li>
+<li>Dash + panels wipe-down</li>
+<li>Interior windows</li>
+</ul>
+</div>
 
-        <div class="pkg">
-          <div class="pkgTop">
-            <div>
-              <div class="pkgTitle">Champions Club</div>
-              <div class="pkgDesc">Full in/out refresh and shine for the premium finish.</div>
-            </div>
-            <div class="badge">Full Refresh</div>
-          </div>
-          <ul class="list">
-            <li><span class="dot"></span> Factory Clean interior treatment</li>
-            <li><span class="dot"></span> Hand wash + wheels/tires</li>
-            <li><span class="dot"></span> Final presentation pass (refresh + shine)</li>
-          </ul>
-        </div>
-      </div>
-    </section>
+<div class="pkg">
+<div class="pkgTitle">1st Date</div>
+<div class="pkgDesc">Inside + outside clean.</div>
+<ul class="list">
+<li>Everything in Basic</li>
+<li>Hand wash exterior</li>
+<li>Wheel + tire clean</li>
+</ul>
+</div>
 
-    <!-- REVIEWS -->
-    <section class="card" id="reviews">
-      <div class="sectionHead">
-        <h2>Reviews</h2>
-        <p>Replace these with real customer texts as you get them (first name + initial works great).</p>
-      </div>
+<div class="pkg">
+<div class="pkgTitle">Factory Clean</div>
+<div class="pkgDesc">Deep interior reset.</div>
+<ul class="list">
+<li>Deep vacuum</li>
+<li>Heavy wipe-down</li>
+<li>Interior focus areas</li>
+</ul>
+</div>
 
-      <div class="twoCol">
-        <div class="quote">
-          <b>“Looked brand new.” <span class="stars">★★★★★</span></b>
-          <p>Example review placeholder — short, specific, believable wins.</p>
-        </div>
-        <div class="quote">
-          <b>“Showed up on time and did it right.” <span class="stars">★★★★★</span></b>
-          <p>Example review placeholder — swap in real customer words later.</p>
-        </div>
-        <div class="quote">
-          <b>“Interior reset was insane.” <span class="stars">★★★★★</span></b>
-          <p>Example review placeholder — “Factory Clean” type feedback goes hard.</p>
-        </div>
-        <div class="quote">
-          <b>“Worth it.” <span class="stars">★★★★★</span></b>
-          <p>Example review placeholder — keep the tone human, not corporate.</p>
-        </div>
-      </div>
-    </section>
+<div class="pkg">
+<div class="pkgTitle">Champions Club</div>
+<div class="pkgDesc">Full refresh and shine.</div>
+<ul class="list">
+<li>Factory Clean interior</li>
+<li>Hand wash</li>
+<li>Final shine pass</li>
+</ul>
+</div>
 
-    <!-- BEFORE/AFTER -->
-    <section class="card" id="gallery">
-      <div class="sectionHead">
-        <h2>Before / After</h2>
-        <p>Upload photos to your repo and I’ll wire them in cleanly. For now these are placeholders.</p>
-      </div>
+</div>
+</section>
 
-      <div class="gallery">
-        <div class="ph"><b>Set #1</b><span>Interior: seats, mats, cup holders</span></div>
-        <div class="ph"><b>Set #2</b><span>Exterior: wheels + paint</span></div>
-        <div class="ph"><b>Set #3</b><span>Close-up: stains / pet hair</span></div>
-        <div class="ph"><b>Set #4</b><span>Full cabin wide shot</span></div>
-      </div>
-    </section>
+<!-- BOOKING -->
+<section class="card" id="book">
+<div class="sectionHead">
+<h2>Request Appointment</h2>
+</div>
 
-    <!-- BOOKING -->
-    <section class="card" id="book">
-      <div class="sectionHead">
-        <h2>Request an appointment</h2>
-        <p>Fill this out and it will open a pre-filled text message to (903) 215-6649 to confirm.</p>
-      </div>
+<div class="bookGrid">
 
-      <div class="bookGrid">
-        <form id="bookingForm">
-          <div>
-            <label for="name">Name</label>
-            <input id="name" name="name" placeholder="Your name" required />
-          </div>
-          <div>
-            <label for="phone">Your phone</label>
-            <input id="phone" name="phone" inputmode="tel" placeholder="903-555-1234" required />
-          </div>
+<form id="bookingForm">
+<input name="name" placeholder="Name" required>
+<input name="phone" placeholder="Your phone" required>
+<input name="address" class="full" placeholder="Service address" required>
+<input name="vehicle" placeholder="Vehicle" required>
 
-          <div class="full">
-            <label for="address">Service address</label>
-            <input id="address" name="address" placeholder="Street + City" required />
-          </div>
+<select name="tier" required>
+<option disabled selected>Select Package</option>
+<option>Basic</option>
+<option>1st Date</option>
+<option>Factory Clean</option>
+<option>Champions Club</option>
+</select>
 
-          <div>
-            <label for="vehicle">Vehicle</label>
-            <input id="vehicle" name="vehicle" placeholder="e.g., 2019 Camry" required />
-          </div>
+<input type="date" name="date" required>
 
-          <div>
-            <label for="tier">Package</label>
-            <select id="tier" name="tier" required>
-              <option value="" selected disabled>Select a package</option>
-              <option>Basic — Interior Freshen</option>
-              <option>1st Date — Inside + Outside</option>
-              <option>Factory Clean — Deep Interior</option>
-              <option>Champions Club — Full Refresh</option>
-            </select>
-          </div>
+<textarea name="notes" placeholder="Notes..."></textarea>
 
-          <div>
-            <label for="date">Preferred date</label>
-            <input id="date" name="date" type="date" required />
-          </div>
-          <div>
-            <label for="window">Time window</label>
-            <select id="window" name="window" required>
-              <option value="" selected disabled>Pick a window</option>
-              <option>Morning (8–11)</option>
-              <option>Midday (11–2)</option>
-              <option>Afternoon (2–5)</option>
-              <option>Evening (5–8)</option>
-            </select>
-          </div>
+<button class="btn primary full" type="submit">Send Request by Text</button>
+</form>
 
-          <textarea id="notes" name="notes" placeholder="Notes: pet hair, stains, priorities, etc."></textarea>
+<div class="card" style="padding:14px;background:rgba(0,0,0,.55)">
+<b>Fast Quote</b>
+<p style="color:var(--muted)">Text photos for fastest pricing.</p>
+<a class="btn primary" href="sms:+19032156649">💬 Text Photos</a>
+</div>
 
-          <div class="full">
-            <button class="btn primary" type="submit">Send request by text</button>
-            <p class="fine">
-              Or contact directly:
-              <a class="btn" href="tel:+19032156649" style="margin-top:10px;">📞 Call</a>
-              <a class="btn" href="sms:+19032156649" style="margin-top:10px;">💬 Text</a>
-            </p>
-            <p class="fine">Payments: Cash • Cash App • Zelle (backup). Pricing depends on size + condition.</p>
-          </div>
-        </form>
+</div>
+</section>
 
-        <div class="miniCard">
-          <b>Fastest way to get a quote</b>
-          <p>Text 2–4 photos (front seats, back seats, floor, any problem areas) and we’ll price it fast.</p>
-          <div class="ctaRow" style="margin-top:10px;">
-            <a class="btn primary" href="sms:+19032156649">💬 Text photos</a>
-            <a class="btn" href="tel:+19032156649">📞 Call</a>
-          </div>
-          <p class="fine" style="margin-top:10px;">Serving on-site detailing locally.</p>
-        </div>
-      </div>
-    </section>
+<div class="foot">
+<span>© <span id="year"></span> Fresh Start Mobile Detailing</span>
+<span>On-Site Detailing</span>
+</div>
 
-    <div class="foot">
-      <span>© <span id="year"></span> Henderson Detailing</span>
-      <span>On-Site Detailing • (903) 215-6649</span>
-    </div>
-  </main>
+</main>
 
-  <script>
-    const PHONE_E164 = "+19032156649";
+<script>
+const PHONE="+19032156649";
+document.getElementById("year").textContent=new Date().getFullYear();
 
-    // Date min = today
-    const dateInput = document.getElementById('date');
-    const now = new Date();
-    const yyyy = now.getFullYear();
-    const mm = String(now.getMonth() + 1).padStart(2,'0');
-    const dd = String(now.getDate()).padStart(2,'0');
-    dateInput.min = `${yyyy}-${mm}-${dd}`;
-    document.getElementById('year').textContent = yyyy;
+document.getElementById("bookingForm").addEventListener("submit",e=>{
+e.preventDefault();
+const d=Object.fromEntries(new FormData(e.target).entries());
 
-    // Booking -> SMS prefill to your business number
-    document.getElementById('bookingForm').addEventListener('submit', function(e){
-      e.preventDefault();
-      const data = Object.fromEntries(new FormData(e.target).entries());
+const msg=`Fresh Start Mobile Detailing booking request:
 
-      const msg =
-`Henderson Detailing booking request:
+Name: ${d.name}
+Phone: ${d.phone}
+Address: ${d.address}
+Vehicle: ${d.vehicle}
+Package: ${d.tier}
+Date: ${d.date}
 
-Name: ${data.name}
-Customer phone: ${data.phone}
-Address: ${data.address}
-Vehicle: ${data.vehicle}
-Package: ${data.tier}
-Preferred date: ${data.date}
-Time window: ${data.window}
+Notes: ${d.notes||"(none)"}`;
 
-Notes: ${data.notes || "(none)"}`;
+window.location.href=`sms:${PHONE}?body=${encodeURIComponent(msg)}`;
+});
+</script>
 
-      window.location.href = `sms:${PHONE_E164}?body=${encodeURIComponent(msg)}`;
-    });
-  </script>
 </body>
 </html>
