@@ -48,27 +48,28 @@
       text-align:center;
     }
 
+    /* ✅ UPDATED: show FULL image without cutting it off */
     .logoCrop{
-      width:min(1000px,96vw);
-      aspect-ratio:16/6;
-      margin:0 auto 18px;
-      border-radius:22px;
-      overflow:hidden;
-      box-shadow:0 18px 50px rgba(11,15,20,.18);
-      border:1px solid var(--line);
-      background:#000;
+      width: min(1000px, 96vw);
+      aspect-ratio: 16 / 7; /* a bit taller so the whole card fits */
+      margin: 0 auto 18px;
+      border-radius: 22px;
+      overflow: hidden;
+      box-shadow: 0 18px 50px rgba(11,15,20,.18);
+      border: 1px solid var(--line);
+      background: #000; /* letterbox color (if needed) */
     }
 
     .logoCrop img{
-      width:100%;
-      height:100%;
-      display:block;
-      object-fit:cover;
-      object-position:50% 38%;
-      transform:scale(1.08);
+      width: 100%;
+      height: 100%;
+      display: block;
 
-      /* IMPORTANT: no filter so tires/colors stay true */
-      filter:none;
+      object-fit: contain;     /* ✅ no cropping */
+      object-position: center; /* ✅ centered */
+
+      transform: none;         /* ✅ remove zoom */
+      filter: none;            /* ✅ keep tire colors true */
     }
 
     h1{
@@ -207,14 +208,10 @@
       font-size:13px;
     }
 
-    /* Keep 1 & 2 subtly lighter (optional) */
     .tier.weaker{
       box-shadow: 0 10px 26px rgba(11,15,20,.08);
       background: rgba(255,255,255,.92);
     }
-
-    /* IMPORTANT: removed “Most Popular” visual highlight */
-    /* (No .tier.popular styles, no .badge) */
 
     .tier.premium{
       background: linear-gradient(180deg, rgba(11,15,20,.03), rgba(255,255,255,1));
@@ -494,11 +491,9 @@
   </footer>
 
   <script>
-    // Footer year
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    // Mailto form submit (no backend required)
-    // Replace this email with YOUR business email:
+    // Replace with your real business email:
     const BUSINESS_EMAIL = "youremail@example.com";
 
     document.getElementById("inquiryForm").addEventListener("submit", (e) => {
