@@ -8,39 +8,34 @@
 
   <style>
     :root{
-      --bg: #ffffff;
-      --text: #0b0f14;
-      --muted: rgba(11,15,20,.68);
-      --card: #ffffff;
-      --line: rgba(11,15,20,.12);
-      --soft: rgba(11,15,20,.06);
+      --bg:#ffffff;
+      --text:#0b0f14;
+      --muted:rgba(11,15,20,.68);
+      --card:#ffffff;
+      --line:rgba(11,15,20,.12);
+      --radius:18px;
+      --shadow:0 14px 40px rgba(11,15,20,.10);
+      --shadow2:0 18px 55px rgba(11,15,20,.14);
+      --max:1050px;
 
-      --blue: #1f6fff;
-      --blue2: #0c4ecb;
-      --silver: rgba(11,15,20,.16);
-
-      --radius: 18px;
-      --shadow: 0 14px 40px rgba(11,15,20,.10);
-      --shadow2: 0 18px 55px rgba(11,15,20,.14);
-
-      --max: 1050px;
+      --blue:#1f6fff;
+      --blue2:#0c4ecb;
     }
 
-    *{ box-sizing: border-box; }
+    *{ box-sizing:border-box; }
     html,body{ height:100%; }
     body{
       margin:0;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-      color: var(--text);
-      background: radial-gradient(1200px 600px at 30% -10%, rgba(31,111,255,.10), transparent 60%),
-                  radial-gradient(900px 500px at 90% 0%, rgba(0,0,0,.06), transparent 55%),
+      color:var(--text);
+      background: radial-gradient(1200px 600px at 30% -10%, rgba(31,111,255,.08), transparent 60%),
+                  radial-gradient(900px 500px at 90% 0%, rgba(0,0,0,.05), transparent 55%),
                   var(--bg);
-      line-height: 1.45;
+      line-height:1.45;
     }
 
-    a{ color: inherit; }
-
-    .wrap{ max-width: var(--max); margin: 0 auto; padding: 0 18px; }
+    a{ color:inherit; }
+    .wrap{ max-width:var(--max); margin:0 auto; padding:0 18px; }
 
     /* HERO */
     .hero{
@@ -49,37 +44,31 @@
       align-items:center;
       justify-content:center;
       padding: 42px 0 24px;
-      position: relative;
-    }
-    .hero-card{
-      width: 100%;
-      text-align: center;
-      padding: 26px 18px 18px;
+      position:relative;
+      text-align:center;
     }
 
-    /* Logo crop trick: uses your full business card image, but only shows the logo text area */
     .logoCrop{
-      width: min(720px, 92vw);
-      height: 160px;
-      margin: 0 auto 12px;
-      border-radius: 22px;
-      background: #fff;
-      box-shadow: 0 10px 28px rgba(11,15,20,.08);
-      border: 1px solid var(--line);
-      overflow: hidden;
-      position: relative;
+      width:min(1000px,96vw);
+      aspect-ratio:16/6;
+      margin:0 auto 18px;
+      border-radius:22px;
+      overflow:hidden;
+      box-shadow:0 18px 50px rgba(11,15,20,.18);
+      border:1px solid var(--line);
+      background:#000;
     }
+
     .logoCrop img{
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+      width:100%;
+      height:100%;
+      display:block;
+      object-fit:cover;
+      object-position:50% 38%;
+      transform:scale(1.08);
 
-      /* These two lines are the "crop". Adjust if needed. */
-      object-position: 60% 22%;
-
-      /* A tiny contrast boost helps the logo pop on a white site */
-      filter: contrast(1.08) saturate(1.05);
-      transform: scale(1.25);
+      /* IMPORTANT: no filter so tires/colors stay true */
+      filter:none;
     }
 
     h1{
@@ -96,32 +85,32 @@
 
     .ctaRow{
       display:flex;
-      gap: 12px;
+      gap:12px;
       justify-content:center;
-      flex-wrap: wrap;
-      margin-top: 14px;
+      flex-wrap:wrap;
+      margin-top:14px;
     }
     .btn{
       appearance:none;
       border: 1px solid var(--line);
-      background: #fff;
-      color: var(--text);
-      padding: 12px 16px;
-      border-radius: 14px;
-      font-weight: 700;
-      cursor: pointer;
+      background:#fff;
+      color:var(--text);
+      padding:12px 16px;
+      border-radius:14px;
+      font-weight:800;
+      cursor:pointer;
       box-shadow: 0 10px 24px rgba(11,15,20,.08);
       transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
-      text-decoration: none;
+      text-decoration:none;
       display:inline-flex;
       align-items:center;
-      gap: 10px;
+      gap:10px;
     }
     .btn:hover{ transform: translateY(-1px); box-shadow: var(--shadow2); border-color: rgba(31,111,255,.28); }
     .btnPrimary{
       background: linear-gradient(180deg, rgba(31,111,255,1), rgba(12,78,203,1));
       border-color: rgba(31,111,255,.35);
-      color: #fff;
+      color:#fff;
       box-shadow: 0 16px 34px rgba(31,111,255,.18);
     }
     .btnPrimary:hover{ box-shadow: 0 18px 44px rgba(31,111,255,.24); }
@@ -129,62 +118,55 @@
     /* Scroll cue */
     .scrollCue{
       position:absolute;
-      left: 50%;
-      bottom: 18px;
-      transform: translateX(-50%);
+      left:50%;
+      bottom:18px;
+      transform:translateX(-50%);
       display:flex;
-      flex-direction: column;
+      flex-direction:column;
       align-items:center;
-      gap: 8px;
+      gap:8px;
       color: rgba(11,15,20,.55);
-      user-select: none;
-      pointer-events: none;
+      user-select:none;
+      pointer-events:none;
     }
     .scrollCue .arrow{
-      width: 32px;
-      height: 32px;
-      border-radius: 999px;
-      border: 1px solid rgba(31,111,255,.30);
+      width:32px;height:32px;
+      border-radius:999px;
+      border:1px solid rgba(31,111,255,.30);
       display:grid;
       place-items:center;
       background: rgba(255,255,255,.8);
       box-shadow: 0 10px 24px rgba(11,15,20,.08);
       animation: bob 1.6s ease-in-out infinite;
     }
-    .scrollCue svg{ opacity:.9; }
-    @keyframes bob{
-      0%,100%{ transform: translateY(0); }
-      50%{ transform: translateY(7px); }
-    }
+    @keyframes bob{ 0%,100%{transform:translateY(0);} 50%{transform:translateY(7px);} }
 
     /* SECTIONS */
-    section{
-      padding: 56px 0;
-    }
+    section{ padding:56px 0; }
     .sectionTitle{
       display:flex;
-      align-items: baseline;
-      justify-content: space-between;
-      gap: 14px;
-      margin-bottom: 16px;
+      align-items:baseline;
+      justify-content:space-between;
+      gap:14px;
+      margin-bottom:16px;
     }
     .sectionTitle h2{
       margin:0;
       font-size: clamp(18px, 2.4vw, 26px);
-      letter-spacing: -0.01em;
+      letter-spacing:-0.01em;
     }
     .sectionTitle p{
       margin:0;
-      color: var(--muted);
-      max-width: 56ch;
-      font-size: 14px;
+      color:var(--muted);
+      max-width:56ch;
+      font-size:14px;
     }
 
     /* TIERS */
     .grid{
       display:grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 14px;
+      grid-template-columns:repeat(12, 1fr);
+      gap:14px;
     }
     .tier{
       grid-column: span 12;
@@ -197,91 +179,64 @@
     }
     .tier header{
       display:flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 10px;
-      margin-bottom: 8px;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:10px;
+      margin-bottom:8px;
     }
-    .tier h3{
-      margin:0;
-      font-size: 18px;
-      letter-spacing: -0.01em;
-    }
+    .tier h3{ margin:0; font-size:18px; letter-spacing:-0.01em; }
     .time{
       color: var(--muted);
-      font-weight: 700;
-      font-size: 12.5px;
-      border: 1px solid var(--line);
+      font-weight:800;
+      font-size:12.5px;
+      border:1px solid var(--line);
       background: rgba(255,255,255,.7);
-      padding: 7px 10px;
-      border-radius: 999px;
-      white-space: nowrap;
+      padding:7px 10px;
+      border-radius:999px;
+      white-space:nowrap;
     }
-    .tier ul{
-      margin: 10px 0 0;
-      padding-left: 18px;
-      color: rgba(11,15,20,.86);
-    }
-    .tier li{ margin: 6px 0; }
+    .tier ul{ margin:10px 0 0; padding-left:18px; color: rgba(11,15,20,.86); }
+    .tier li{ margin:6px 0; }
     .note{
-      margin-top: 10px;
-      padding: 10px 12px;
-      border-radius: 14px;
+      margin-top:10px;
+      padding:10px 12px;
+      border-radius:14px;
       background: rgba(11,15,20,.04);
       border: 1px solid rgba(11,15,20,.10);
       color: rgba(11,15,20,.72);
-      font-size: 13px;
+      font-size:13px;
     }
 
-    /* Make 1 & 2 feel “weaker” visually (less wow) */
+    /* Keep 1 & 2 subtly lighter (optional) */
     .tier.weaker{
       box-shadow: 0 10px 26px rgba(11,15,20,.08);
       background: rgba(255,255,255,.92);
     }
 
-    /* Fresh Start: Most Popular highlight */
-    .tier.popular{
-      border-color: rgba(31,111,255,.35);
-      box-shadow: 0 18px 55px rgba(31,111,255,.12);
-      transform: translateY(-2px);
-    }
-    .badge{
-      position:absolute;
-      top: 12px;
-      right: 12px;
-      font-size: 12px;
-      font-weight: 900;
-      color: #fff;
-      background: linear-gradient(180deg, rgba(31,111,255,1), rgba(12,78,203,1));
-      border: 1px solid rgba(255,255,255,.35);
-      border-radius: 999px;
-      padding: 7px 10px;
-      box-shadow: 0 12px 28px rgba(31,111,255,.18);
-    }
+    /* IMPORTANT: removed “Most Popular” visual highlight */
+    /* (No .tier.popular styles, no .badge) */
 
-    /* Champion’s Club: premium but still bright */
     .tier.premium{
       background: linear-gradient(180deg, rgba(11,15,20,.03), rgba(255,255,255,1));
     }
 
     @media (min-width: 860px){
       .tier{ grid-column: span 3; }
-      .tier.popular{ grid-column: span 3; }
     }
 
     /* FORM */
     .formCard{
-      background: #fff;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 18px;
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:18px;
     }
     form{
       display:grid;
       grid-template-columns: repeat(12, 1fr);
       gap: 12px;
-      margin-top: 10px;
+      margin-top:10px;
     }
     .field{ grid-column: span 12; }
     @media (min-width: 720px){
@@ -289,54 +244,49 @@
     }
     label{
       display:block;
-      font-weight: 800;
-      font-size: 12.5px;
+      font-weight:900;
+      font-size:12.5px;
       color: rgba(11,15,20,.72);
-      margin-bottom: 6px;
-      letter-spacing: .02em;
-      text-transform: uppercase;
+      margin-bottom:6px;
+      letter-spacing:.02em;
+      text-transform:uppercase;
     }
     input, select, textarea{
       width:100%;
-      padding: 12px 12px;
-      border-radius: 14px;
+      padding:12px 12px;
+      border-radius:14px;
       border: 1px solid var(--line);
       background: rgba(255,255,255,.95);
-      outline: none;
+      outline:none;
       font-size: 15px;
     }
-    textarea{ min-height: 110px; resize: vertical; }
+    textarea{ min-height:110px; resize:vertical; }
     input:focus, select:focus, textarea:focus{
       border-color: rgba(31,111,255,.50);
       box-shadow: 0 0 0 4px rgba(31,111,255,.12);
     }
-
     .fineprint{
-      margin-top: 10px;
+      margin-top:10px;
       color: rgba(11,15,20,.62);
-      font-size: 12.5px;
-      line-height: 1.35;
+      font-size:12.5px;
+      line-height:1.35;
     }
 
     footer{
-      padding: 24px 0 40px;
+      padding:24px 0 40px;
       color: rgba(11,15,20,.55);
-      font-size: 13px;
+      font-size:13px;
       border-top: 1px solid rgba(11,15,20,.10);
       background: rgba(255,255,255,.7);
     }
     .footerRow{
       display:flex;
-      justify-content: space-between;
-      gap: 12px;
-      flex-wrap: wrap;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
       align-items:center;
     }
-
-    .mini{
-      color: rgba(11,15,20,.55);
-      font-size: 13px;
-    }
+    .mini{ color: rgba(11,15,20,.55); font-size:13px; }
   </style>
 </head>
 
@@ -344,22 +294,17 @@
 
   <!-- HERO -->
   <header class="hero" id="top">
-    <div class="wrap hero-card">
-
-      <!-- Put your business card image here: assets/card.jpg -->
+    <div class="wrap">
       <div class="logoCrop" aria-label="Fresh Start logo">
-        <img src="card.jpg" alt="Fresh Start business card (logo crop)" />
+        <img src="card.jpg" alt="Fresh Start business card" />
       </div>
 
       <h1>Fresh Start Mobile Detailing</h1>
       <p class="tagline">Refresh Your Vehicle.</p>
 
       <div class="ctaRow">
-        <a class="btn btnPrimary" href="#inquiry" aria-label="Request a Detail">
-          Request a Detail
-        </a>
+        <a class="btn btnPrimary" href="#inquiry" aria-label="Request a Detail">Request a Detail</a>
       </div>
-
     </div>
 
     <div class="scrollCue" aria-hidden="true">
@@ -424,8 +369,7 @@
           <div class="note"><strong>Note:</strong> No interior service included (besides glass).</div>
         </article>
 
-        <article class="tier popular">
-          <div class="badge">⭐ Most Popular</div>
+        <article class="tier">
           <header>
             <div>
               <h3>🧼 Fresh Start</h3>
@@ -474,20 +418,25 @@
     </div>
   </section>
 
-  <!-- INQUIRY -->
+  <!-- INQUIRY (rewritten + phone added) -->
   <section id="inquiry">
     <div class="wrap">
       <div class="sectionTitle">
-        <h2>Request a Detail</h2>
-        <p>No phone number needed — send your details here and you’ll receive a response by email.</p>
+        <h2>Get a Quote</h2>
+        <p>Please fill this out for a quote. Include the vehicle condition and what you want improved, and we’ll get back to you.</p>
       </div>
 
       <div class="formCard">
-        <!-- Uses mailto (no backend). Replace the email below with YOUR email. -->
         <form id="inquiryForm">
           <div class="field half">
             <label for="name">Name</label>
             <input id="name" name="name" autocomplete="name" required />
+          </div>
+
+          <div class="field half">
+            <label for="phone">Phone Number</label>
+            <input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel"
+                   placeholder="Example: (903) 555-1234" required />
           </div>
 
           <div class="field half">
@@ -511,15 +460,25 @@
             </select>
           </div>
 
-          <div class="field">
-            <label for="notes">Condition / desired outcome</label>
-            <textarea id="notes" name="notes" placeholder="Tell us what you want fixed (mud, stains, odor, pet hair, etc.) and anything important to know."></textarea>
+          <div class="field half">
+            <label for="preferred">Preferred Contact</label>
+            <select id="preferred" name="preferred" required>
+              <option value="" selected disabled>Choose one…</option>
+              <option>Text</option>
+              <option>Call</option>
+              <option>Email</option>
+            </select>
           </div>
 
           <div class="field">
-            <button class="btn btnPrimary" type="submit">Send Inquiry</button>
+            <label for="notes">Condition / desired outcome</label>
+            <textarea id="notes" name="notes" placeholder="Mud, stains, odor, pet hair, spills, smoke smell, etc. The more detail, the faster the quote."></textarea>
+          </div>
+
+          <div class="field">
+            <button class="btn btnPrimary" type="submit">Request Quote</button>
             <div class="fineprint">
-              Final pricing is determined by vehicle size, condition, and desired outcome. Average service times may vary based on vehicle condition.
+              Final pricing is based on vehicle size, condition, and what you want done. Times listed are estimates and can vary by condition.
             </div>
           </div>
         </form>
@@ -546,17 +505,21 @@
       e.preventDefault();
 
       const name = document.getElementById("name").value.trim();
+      const phone = document.getElementById("phone").value.trim();
       const email = document.getElementById("email").value.trim();
       const vehicle = document.getElementById("vehicle").value.trim();
       const tier = document.getElementById("tier").value;
+      const preferred = document.getElementById("preferred").value;
       const notes = document.getElementById("notes").value.trim();
 
-      const subject = encodeURIComponent(`Detail Inquiry — ${tier} — ${vehicle}`);
+      const subject = encodeURIComponent(`Quote Request — ${tier} — ${vehicle}`);
       const body = encodeURIComponent(
 `Name: ${name}
+Phone: ${phone}
 Email: ${email}
 Vehicle: ${vehicle}
 Desired Tier: ${tier}
+Preferred Contact: ${preferred}
 
 Condition / Desired Outcome:
 ${notes || "(none provided)"}
