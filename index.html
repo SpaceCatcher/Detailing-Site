@@ -218,7 +218,65 @@ footer{
   border-radius:999px;
   white-space:nowrap;
 }
+.topSocial{
+  position:absolute;
+  top:18px;
+  right:18px;
+  z-index:5;
+}
 
+.facebookTopBtn{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  padding:10px 14px;
+  border-radius:999px;
+  font-weight:800;
+  font-size:14px;
+  text-decoration:none;
+  color:#fff;
+  background:linear-gradient(180deg,#1877f2,#0e5ec9);
+  box-shadow:0 10px 25px rgba(0,0,0,.18);
+}
+
+.facebookTopBtn svg{
+  width:16px;
+  height:16px;
+}
+.heroScrollPrompt{
+  margin-top:16px;
+}
+
+.scrollLink{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:12px 16px;
+  border-radius:999px;
+  font-weight:800;
+  text-decoration:none;
+  border:1px solid var(--line);
+  background:#fff;
+}
+
+.scrollCue{
+  position:absolute;
+  bottom:18px;
+  left:50%;
+  transform:translateX(-50%);
+}
+
+.scrollCue .arrow{
+  width:42px;
+  height:42px;
+  border-radius:999px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#fff;
+  border:1px solid var(--line);
+  box-shadow:var(--shadow);
+}
 /* price pill (you partially removed styling earlier) */
 .price{
   font-weight:900;
