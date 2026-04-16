@@ -194,6 +194,69 @@ footer{
   padding:24px 0 40px;
   border-top:1px solid var(--line);
 }
+
+/* =========================
+   MISSING STRUCTURE (RESTORE)
+========================= */
+
+/* time + price layout */
+.timePrice{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-end;
+  gap:6px;
+}
+
+/* time pill (you had this before) */
+.time{
+  color: var(--muted);
+  font-weight:800;
+  font-size:12.5px;
+  border:1px solid var(--line);
+  background: rgba(255,255,255,.7);
+  padding:7px 10px;
+  border-radius:999px;
+  white-space:nowrap;
+}
+
+/* price pill (you partially removed styling earlier) */
+.price{
+  font-weight:900;
+  font-size:13px;
+  padding:6px 12px;
+  border-radius:999px;
+  border:1px solid var(--line);
+  background: rgba(255,255,255,.85);
+  box-shadow: 0 6px 14px rgba(11,15,20,.08);
+}
+
+/* header alignment (important for layout) */
+.tier header{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:10px;
+  margin-bottom:8px;
+}
+
+/* small subtitle under tier titles */
+.mini{
+  color: var(--muted);
+  font-size:13px;
+}
+
+/* list spacing (you had tighter control before) */
+.tier ul{
+  margin:10px 0 0;
+  padding-left:18px;
+  color: rgba(11,15,20,.86);
+}
+
+.tier li{
+  margin:6px 0;
+}
+
+/* note
   </style>
 </head>
 
