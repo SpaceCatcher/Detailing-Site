@@ -8,6 +8,42 @@
 
   <style>
 
+.tier-blue{ background: linear-gradient(180deg, rgba(31,111,255,.04), #fff); }
+.tier-gray{ background: linear-gradient(180deg, rgba(0,0,0,.03), #fff); }
+.tier-teal{ background: linear-gradient(180deg, rgba(20,184,166,.05), #fff); }
+.tier-gold{ background: linear-gradient(180deg, rgba(250,204,21,.08), #fff); }
+
+/* 🔵 1st Date (Blue) */
+.tier-blue{
+  border-top: 3px solid var(--blue);
+}
+.tier-blue h3{
+  color: var(--blue2);
+}
+
+/* ⚙️ Road Reset (Gray) */
+.tier-gray{
+  border-top: 3px solid rgba(11,15,20,.25);
+}
+.tier-gray h3{
+  color: rgba(11,15,20,.75);
+}
+
+/* 🧼 Fresh Start (Teal) */
+.tier-teal{
+  border-top: 3px solid #14b8a6;
+}
+.tier-teal h3{
+  color: #0f766e;
+}
+
+/* 🏆 Champion’s Club (Gold) */
+.tier-gold{
+  border-top: 3px solid #facc15;
+}
+.tier-gold h3{
+  color: #b45309;
+}
 
 .tier.premium .price{
   background: linear-gradient(180deg, rgba(255,215,0,.25), rgba(255,215,0,.10));
@@ -478,7 +514,7 @@
 
       <div class="grid">
 
-        <article class="tier weaker">
+        <article class="tier weaker tier-blue">
           <header>
             <div>
               <h3>🚗 1st Date</h3>
@@ -502,7 +538,7 @@
           <div class="note"><strong>Note:</strong> No steam cleaning or deep stain extraction.</div>
         </article>
 
-        <article class="tier weaker">
+        <article class="tier weaker tier-gray">
           <header>
             <div>
               <h3>🛞 Road Reset</h3>
@@ -525,7 +561,7 @@
           <div class="note"><strong>Note:</strong> No interior service included (besides glass).</div>
         </article>
 
-        <article class="tier">
+        <article class="tier tier-teal">
           <header>
             <div>
               <h3>🧼 Fresh Start</h3>
@@ -550,7 +586,7 @@
           </ul>
         </article>
 
-        <article class="tier premium">
+        <article class="tier premium tier-gold">
           <header>
             <div>
               <h3>🏆 Champion’s Club</h3>
