@@ -17,7 +17,6 @@
       --shadow:0 14px 40px rgba(11,15,20,.10);
       --shadow2:0 18px 55px rgba(11,15,20,.14);
       --max:1050px;
-
       --blue:#1f6fff;
       --blue2:#0c4ecb;
     }
@@ -28,12 +27,38 @@
       margin:0;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
       color:var(--text);
-      background: var(--bg);
+      background: radial-gradient(1200px 600px at 30% -10%, rgba(31,111,255,.08), transparent 60%),
+                  radial-gradient(900px 500px at 90% 0%, rgba(0,0,0,.05), transparent 55%),
+                  var(--bg);
       line-height:1.45;
     }
 
     a{ color:inherit; }
     .wrap{ max-width:var(--max); margin:0 auto; padding:0 18px; }
+
+    .fbLink{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      margin-top:10px;
+      padding:10px 14px;
+      border-radius:12px;
+      background:#1877f2;
+      color:#fff;
+      font-weight:800;
+      text-decoration:none;
+      box-shadow: 0 10px 24px rgba(0,0,0,.12);
+      transition: transform .12s ease, box-shadow .12s ease;
+    }
+    .fbLink img{
+      width:18px;
+      height:18px;
+      filter: brightness(0) invert(1);
+    }
+    .fbLink:hover{
+      transform: translateY(-1px);
+      box-shadow: 0 14px 30px rgba(0,0,0,.18);
+    }
 
     .hero{
       min-height: 92vh;
@@ -46,30 +71,31 @@
 
     .logoCrop{
       width: min(1000px, 96vw);
+      aspect-ratio: 16 / 7;
       margin: 0 auto 18px;
+      border-radius: 22px;
+      overflow: hidden;
+      box-shadow: 0 18px 50px rgba(11,15,20,.18);
+      border: 1px solid var(--line);
+      background: #000;
     }
 
     .logoCrop img{
       width: 100%;
-      display: block;
+      height: 100%;
+      object-fit: contain;
     }
 
-    h1{
-      margin: 10px 0 6px;
-      font-size: clamp(26px, 3.6vw, 40px);
-    }
-
-    .tagline{
-      margin: 0 auto 18px;
-      max-width: 54ch;
-      color: var(--muted);
-    }
+    h1{ margin: 10px 0 6px; }
+    .tagline{ color: var(--muted); }
 
     section{ padding:56px 0; }
 
-    .sectionTitle{ margin-bottom:16px; }
-
-    .sectionTitle p{ color:var(--muted); }
+    .sectionTitle p{
+      color:var(--muted);
+      font-size:14px;
+      margin:0;
+    }
 
     .grid{
       display:grid;
@@ -79,10 +105,10 @@
 
     .tier{
       grid-column: span 12;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 16px;
-      box-shadow: var(--shadow);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:16px;
+      box-shadow:var(--shadow);
     }
 
     @media (min-width: 860px){
@@ -101,43 +127,15 @@
       border-radius:999px;
     }
 
-    .note{
-      margin-top:10px;
-      font-size:13px;
-      color:var(--muted);
-    }
-
-    /* FACEBOOK BUTTON */
-    .fbLink{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      margin-top:10px;
-      padding:10px 14px;
-      border-radius:12px;
-      background:#1877f2;
-      color:#fff;
-      font-weight:800;
-      text-decoration:none;
-      box-shadow: 0 10px 24px rgba(0,0,0,.12);
-      transition: transform .12s ease, box-shadow .12s ease;
-    }
-
-    .fbLink img{
-      width:18px;
-      height:18px;
-      filter: brightness(0) invert(1);
-    }
-
-    .fbLink:hover{
-      transform: translateY(-1px);
-      box-shadow: 0 14px 30px rgba(0,0,0,.18);
-    }
-
     footer{
       padding:24px 0 40px;
-      border-top: 1px solid var(--line);
-      text-align:center;
+      border-top:1px solid var(--line);
+    }
+
+    .footerRow{
+      display:flex;
+      justify-content:space-between;
+      flex-wrap:wrap;
     }
 
     .mini{
@@ -154,13 +152,12 @@
     <div class="logoCrop">
       <img src="card.jpg" />
     </div>
-
     <h1>Fresh Start Mobile Detailing</h1>
     <p class="tagline">Refresh Your Vehicle.</p>
   </div>
 </header>
 
-<section>
+<section id="services">
   <div class="wrap">
     <div class="sectionTitle">
       <h2>Service Tiers</h2>
@@ -193,6 +190,7 @@
           <li>Removal of dirt, mud & road grime</li>
           <li>Wheel & tire cleaning</li>
           <li>Tire shine</li>
+          <!-- ONLY REMOVED HERE -->
           <li>Exterior dry & finish wipe</li>
         </ul>
       </article>
@@ -204,8 +202,9 @@
         </header>
         <ul>
           <li>Full interior vacuum</li>
-          <li>Steam cleaning</li>
+          <li>Steam cleaning of interior surfaces</li>
           <li>Carpet & seat shampoo (as needed)</li>
+          <li>Interior & exterior glass cleaned</li>
           <li>Exterior washed</li>
         </ul>
       </article>
@@ -217,8 +216,7 @@
         </header>
         <ul>
           <li>Deep interior cleaning & extraction</li>
-          <li>Heavy stain treatment</li>
-          <li>Full interior surface conditioning</li>
+          <li>Interior & exterior glass cleaned</li>
           <li>Exterior washed</li>
         </ul>
       </article>
@@ -228,14 +226,12 @@
 </section>
 
 <footer>
-  <div class="wrap">
+  <div class="wrap footerRow">
     <div>© 2026 Fresh Start Mobile Detailing</div>
-
     <div class="mini">
-      Professional • Accurate • Good Vibes
-      <br><br>
-      <a href="https://www.facebook.com/FreshStartMobileDetailing" target="_blank" rel="noopener" class="fbLink">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook" />
+      Professional • Accurate • Good Vibes <br><br>
+      <a href="https://www.facebook.com/FreshStartMobileDetailing" target="_blank" class="fbLink">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg">
         Visit our Facebook
       </a>
     </div>
